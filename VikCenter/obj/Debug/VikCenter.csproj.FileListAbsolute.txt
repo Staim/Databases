@@ -1,0 +1,10 @@
+C:\Users\krl\Desktop\project\VikCenter\VikCenter\bin\Debug\VikCenter.exe.config
+C:\Users\krl\Desktop\project\VikCenter\VikCenter\bin\Debug\VikCenter.exe
+C:\Users\krl\Desktop\project\VikCenter\VikCenter\bin\Debug\VikCenter.pdb
+C:\Users\krl\Desktop\project\VikCenter\VikCenter\obj\Debug\VikCenter.csprojResolveAssemblyReference.cache
+C:\Users\krl\Desktop\project\VikCenter\VikCenter\obj\Debug\VikCenter.MainForm.resources
+C:\Users\krl\Desktop\project\VikCenter\VikCenter\obj\Debug\VikCenter.Properties.Resources.resources
+C:\Users\krl\Desktop\project\VikCenter\VikCenter\obj\Debug\VikCenter.csproj.GenerateResource.Cache
+C:\Users\krl\Desktop\project\VikCenter\VikCenter\obj\Debug\VikCenter.exe
+C:\Users\krl\Desktop\project\VikCenter\VikCenter\obj\Debug\VikCenter.pdb
+C:\Users\krl\Desktop\project\VikCenter\VikCenter\obj\Debug\VikCenter.LoginForm.resources
