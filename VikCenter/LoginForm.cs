@@ -36,8 +36,8 @@ namespace VikCenter
         private void enterButton_Click(object sender, EventArgs e)
         {
             //можно добавить транзакцию
-            dbDataSetTableAdapters.ЛогиныTableAdapter loginTableAdapter = new dbDataSetTableAdapters.ЛогиныTableAdapter();
-            using (dbDataSet.ЛогиныDataTable loginsDataTable = new dbDataSet.ЛогиныDataTable())
+            db1DataSetTableAdapters.ЛогиныTableAdapter loginTableAdapter = new db1DataSetTableAdapters.ЛогиныTableAdapter();
+            using (db1DataSet.ЛогиныDataTable loginsDataTable = new db1DataSet.ЛогиныDataTable())
             {
                 loginTableAdapter.Fill(loginsDataTable);
 
@@ -78,8 +78,8 @@ namespace VikCenter
         private void changePassButton_Click(object sender, EventArgs e)
         {
             //можно добавить транзакцию
-            dbDataSetTableAdapters.ЛогиныTableAdapter loginTableAdapter = new dbDataSetTableAdapters.ЛогиныTableAdapter();
-            using (dbDataSet.ЛогиныDataTable loginsDataTable = new dbDataSet.ЛогиныDataTable())
+            db1DataSetTableAdapters.ЛогиныTableAdapter loginTableAdapter = new db1DataSetTableAdapters.ЛогиныTableAdapter();
+            using (db1DataSet.ЛогиныDataTable loginsDataTable = new db1DataSet.ЛогиныDataTable())
             {
                 loginTableAdapter.Fill(loginsDataTable);
 

@@ -59,10 +59,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="dbDataSet.Designer.cs">
+    <Compile Include="db1DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>dbDataSet.xsd</DependentUpon>
+      <DependentUpon>db1DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Registrators.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registrators.Designer.cs">
+      <DependentUpon>Registrators.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -92,17 +98,21 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="dbDataSet.xsc">
-      <DependentUpon>dbDataSet.xsd</DependentUpon>
+    <EmbeddedResource Include="Registrators.resx">
+      <DependentUpon>Registrators.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="db1DataSet.xsc">
+      <DependentUpon>db1DataSet.xsd</DependentUpon>
     </None>
-    <None Include="dbDataSet.xsd">
+    <None Include="db1DataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dbDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>db1DataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="dbDataSet.xss">
-      <DependentUpon>dbDataSet.xsd</DependentUpon>
+    <None Include="db1DataSet.xss">
+      <DependentUpon>db1DataSet.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -133,6 +143,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\194546.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
