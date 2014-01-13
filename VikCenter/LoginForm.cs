@@ -14,6 +14,12 @@ namespace VikCenter
     {
         private bool verify = false;
         private bool verify_change = false;
+        private string _loginIfo = "";
+        public string loginInfo()
+        {
+
+            return _loginIfo;
+        }
 
         public LoginForm()
         {
@@ -47,9 +53,17 @@ namespace VikCenter
                     string login = (string) row["Логин"];
                     string pass = (string) row["Пароль"];
                     if (login == loginTextBox.Text && pass == passwordTextBox.Text)
+                    {
+                        _loginIfo = "Вы зашли под именем: " + login + ". Время подключения: " + DateTime.Now.ToShortTimeString();
                         verify = true;
+                    }
                 }
-                if (!verify) MessageBox.Show("Введен неверный логин или пароль. Повторите снова", "Ошибка при вводе", MessageBoxButtons.OK); else this.Close();
+                if (!verify) MessageBox.Show("Введен неверный логин или пароль. Повторите снова", "Ошибка при вводе", MessageBoxButtons.OK);
+                else
+                {
+                    
+                    this.Close();
+                }
 
             }
 

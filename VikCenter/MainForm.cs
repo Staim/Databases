@@ -21,8 +21,10 @@ namespace VikCenter
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-           // LoginForm loginForm = new LoginForm();
-           // loginForm.ShowDialog();
+            LoginForm loginForm = new LoginForm();
+            //loginForm.ShowDialog();
+            loginLabel.Text = loginForm.loginInfo();
+
         }
 
         private void регистраторыToolStripMenuItem_Click(object sender, EventArgs e)
@@ -31,6 +33,42 @@ namespace VikCenter
             regForm.MdiParent = this;
             regForm.Show();
 
+        }
+
+        private void выходToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void каскадомToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.LayoutMdi(MdiLayout.Cascade);
+        }
+
+        private void вертикальноToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.LayoutMdi(MdiLayout.TileVertical);
+        }
+
+        private void горизонтальноToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.LayoutMdi(MdiLayout.TileHorizontal);
+        }
+
+        private void своднаяТаблицаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            arenda arendaForm = new arenda();
+            arendaForm.MdiParent = this;
+            arendaForm.setDataGrid("", true);
+            arendaForm.Show();
+        }
+
+        private void арендаАдресовToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            arenda arendaForm = new arenda();
+            arendaForm.MdiParent = this;
+            arendaForm.setDataGrid("", false);
+            arendaForm.Show();
         }
     }
 }

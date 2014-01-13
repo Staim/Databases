@@ -19,3 +19,4 @@ C:\Users\krl\Desktop\project\Databases\VikCenter\obj\Debug\VikCenter.MainForm.re
 C:\Users\krl\Desktop\project\Databases\VikCenter\obj\Debug\VikCenter.Properties.Resources.resources
 C:\Users\krl\Desktop\project\Databases\VikCenter\obj\Debug\VikCenter.RegistratorsForm.resources
 C:\Users\krl\Desktop\project\Databases\VikCenter\obj\Debug\VikCenter.csproj.GenerateResource.Cache
+C:\Users\krl\Desktop\project\Databases\VikCenter\obj\Debug\VikCenter.arenda.resources
