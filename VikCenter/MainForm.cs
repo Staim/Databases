@@ -21,10 +21,11 @@ namespace VikCenter
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            LoginForm loginForm = new LoginForm();
+            //LoginForm loginForm = new LoginForm();
             //loginForm.ShowDialog();
-            loginLabel.Text = loginForm.loginInfo();
-
+            //loginLabel.Text = loginForm.loginInfo();
+            Form1 frm = new Form1();
+            frm.Show();
         }
 
         private void регистраторыToolStripMenuItem_Click(object sender, EventArgs e)

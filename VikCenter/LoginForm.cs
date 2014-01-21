@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,11 +17,28 @@ namespace VikCenter
         private bool verify = false;
         private bool verify_change = false;
         private string _loginIfo = "";
-        public string loginInfo()
+        private LoginInfo loginInfo;
+        private BinaryFormatter binaryFormatter;
+        private string filePath;
+
+        public string FilePath
+        {
+            get {
+                if (File.Exists(@"login.ini"))
+                {
+                    filePath = @"login.ini";
+                    return filePath;
+                }
+                else { return ""; }
+            }
+            set { filePath = value; }
+        }
+
+   /*     public string loginInfo()
         {
 
             return _loginIfo;
-        }
+        }*/
 
         public LoginForm()
         {
@@ -32,6 +51,20 @@ namespace VikCenter
             this.StartPosition = FormStartPosition.CenterScreen;
             this.MaximumSize = new Size(229, 160);
             this.MinimumSize = new Size(229, 160);
+
+            if (this.FilePath != "")
+            {
+                using (FileStream fs = new FileStream(this.FilePath, FileMode.Open))
+                {
+                    binaryFormatter = new BinaryFormatter();
+                    loginInfo = (LoginInfo)binaryFormatter.Deserialize(fs);
+                }
+            }
+            else loginInfo = new LoginInfo();
+            this.loginTextBox.Text = loginInfo.Login;
+            this.passwordTextBox.Text = loginInfo.Password;
+            if (loginInfo.State == true) this.saveCheckBox.CheckState = CheckState.Checked;
+            else this.saveCheckBox.CheckState = CheckState.Unchecked;
         }
 
         private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -52,11 +85,33 @@ namespace VikCenter
                     DataRow row = loginsDataTable.Rows[i];
                     string login = (string) row["Логин"];
                     string pass = (string) row["Пароль"];
-                    if (login == loginTextBox.Text && pass == passwordTextBox.Text)
-                    {
-                        _loginIfo = "Вы зашли под именем: " + login + ". Время подключения: " + DateTime.Now.ToShortTimeString();
-                        verify = true;
-                    }
+                        if (login == loginTextBox.Text && pass == passwordTextBox.Text)
+                        {
+                            _loginIfo = "Вы зашли под именем: " + login + ". Время подключения: " + DateTime.Now.ToShortTimeString();
+                            verify = true;
+                            loginInfo.Login = login;
+                            loginInfo.Password = pass;
+                            if (saveCheckBox.Checked)
+                            // ceриализуем
+                            {
+                                FileMode fileMode;
+                                if (this.FilePath.Length > 0)
+                                {
+                                     fileMode = FileMode.Open;
+                                }
+                                else
+                                {
+                                    fileMode = FileMode.Create;
+                                }
+                                using (FileStream fs = new FileStream(@"login.ini", fileMode))
+                                {
+                                    BinaryFormatter binaryFormatter = new BinaryFormatter();
+                                    binaryFormatter.Serialize(fs, loginInfo);
+                                }
+                            }
+
+                        }
+ 
                 }
                 if (!verify) MessageBox.Show("Введен неверный логин или пароль. Повторите снова", "Ошибка при вводе", MessageBoxButtons.OK);
                 else
@@ -125,6 +180,33 @@ namespace VikCenter
             panel2.Visible = false;
             panel1.Visible = true;
             
+        }
+    }
+
+    [Serializable]
+    public class LoginInfo
+    {
+        private string login;
+
+        public string Login
+        {
+            get { return login; }
+            set { login = value; }
+        }
+        private string password;
+
+        public string Password
+        {
+            get { return password; }
+            set { password = value; }
+        }
+
+        private bool state;
+
+        public bool State
+        {
+            get { return state; }
+            set { state = value; }
         }
     }
 }
