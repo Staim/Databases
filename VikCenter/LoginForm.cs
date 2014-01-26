@@ -17,7 +17,7 @@ namespace VikCenter
         private bool verify = false;
         private bool verify_change = false;
         private string _loginIfo = "";
-        private LoginInfo loginInfo;
+        public LoginInfo loginInfo;
         private BinaryFormatter binaryFormatter;
         private string filePath;
 
@@ -87,10 +87,11 @@ namespace VikCenter
                     string pass = (string) row["Пароль"];
                         if (login == loginTextBox.Text && pass == passwordTextBox.Text)
                         {
-                            _loginIfo = "Вы зашли под именем: " + login + ". Время подключения: " + DateTime.Now.ToShortTimeString();
+                            //_loginIfo = "Вы зашли под именем: " + login + ". Время подключения: " + DateTime.Now.ToShortTimeString();
                             verify = true;
                             loginInfo.Login = login;
                             loginInfo.Password = pass;
+                            loginInfo.Role = row["Правило"].ToString()[0];
                             if (saveCheckBox.Checked)
                             // ceриализуем
                             {
@@ -116,7 +117,7 @@ namespace VikCenter
                 if (!verify) MessageBox.Show("Введен неверный логин или пароль. Повторите снова", "Ошибка при вводе", MessageBoxButtons.OK);
                 else
                 {
-                    
+                    loginInfo.LoginTime = DateTime.Now;
                     this.Close();
                 }
 
@@ -207,6 +208,22 @@ namespace VikCenter
         {
             get { return state; }
             set { state = value; }
+        }
+
+        private DateTime loginTime;
+
+        public DateTime LoginTime
+        {
+            get { return loginTime; }
+            set { loginTime = value; }
+        }
+
+        private char role = 'A';
+
+        public char Role
+        {
+            get { return role; }
+            set { role = value; }
         }
     }
 }
