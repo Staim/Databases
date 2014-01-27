@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+using VikCenter.db1DataSetTableAdapters;
 
 namespace VikCenter
 {
@@ -278,12 +279,38 @@ namespace VikCenter
 
         private void toolStripButton9_Click(object sender, EventArgs e)
         {
-      /*      dataGridView1.CurrentRow.DefaultCellStyle.BackColor = Color.Red;
-            dataGridView1.CurrentRow.Cells["Статус_строки"].Value = "1";
+
+            //ЛогиныTableAdapter adapter = new ЛогиныTableAdapter();
+           // MainForm data = this.MdiParent as MainForm;
+            //adapter.UpdateRow("root", "test","C",1);
+           
             
-            MainForm all = this.MdiParent as MainForm;
-            db1DataSet.РегистраторыRow row = new db1DataSet.РегистраторыRow();
-            row.*/
+            int rowIndex =  dataGridView1.CurrentCell.RowIndex;
+            int currntValue = byte.Parse(dataGridView1.Rows[rowIndex].Cells["Статус_строки"].Value.ToString());
+
+            РегистраторыTableAdapter adapter = new РегистраторыTableAdapter();
+            if (currntValue == 0)
+            {
+                DialogResult result = MessageBox.Show("test", "test2", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == System.Windows.Forms.DialogResult.Yes) ;
+                {
+
+                    var celValue = dataGridView1.Rows[rowIndex].Cells["Наименование"].Value.ToString();
+
+                    adapter.Del(1, celValue);
+                    dataGridView1.CurrentRow.DefaultCellStyle.BackColor = Color.Red;
+                }
+            }
+            else
+            {
+                var celvalue = dataGridView1.Rows[rowIndex].Cells["Наименование"].Value.ToString();
+                adapter.Del(0, celvalue);
+                dataGridView1.CurrentRow.DefaultCellStyle.BackColor = Color.White;
+            }
+            
+           //string data = dataGridView1.Rows[rowIndex].
+
+
         }
 
         private void dataGridView1_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
@@ -299,18 +326,22 @@ namespace VikCenter
 
         private void dataGridView1_RowValidated(object sender, DataGridViewCellEventArgs e)
         {
-           if (dataGridView1.Rows[e.RowIndex].Cells["Статус_строки"].Value.ToString() == "0")
-                dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Red;
+          /* if (dataGridView1.Rows[e.RowIndex].Cells["Статус_строки"].Value.ToString() == "0")
+                dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Red;**/
             
         }
 
         private void Regmod_FormClosing(object sender, FormClosingEventArgs e)
         {
-                    
             MainForm main = this.MdiParent as MainForm;
             main.global.renewRegsTable();
             main.global.renewArendaTable();
             main.global.Windows = main.global.Windows ^ Global.WindowsOpen.RegistratorsMod;
+        }
+
+        private void toolStripComboBox1_Click(object sender, EventArgs e)
+        {
+
         }
 
     }

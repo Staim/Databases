@@ -6,6 +6,9 @@
 }
 
 namespace VikCenter.db1DataSetTableAdapters {
+    partial class РегистраторыTableAdapter
+    {
+    }
     
     
     public partial class ЛогиныTableAdapter {
