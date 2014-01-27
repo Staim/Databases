@@ -88,7 +88,7 @@ namespace VikCenter
             dataGridView3.Columns.RemoveAt(7);
             dataGridView3.Columns.Insert(7, payDate);
             dataGridView3.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridView3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridView3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void SetUpDataGrid_new(MainForm main)
@@ -287,29 +287,39 @@ namespace VikCenter
             
             int rowIndex =  dataGridView1.CurrentCell.RowIndex;
             int currntValue = byte.Parse(dataGridView1.Rows[rowIndex].Cells["Статус_строки"].Value.ToString());
-
+            
             РегистраторыTableAdapter adapter = new РегистраторыTableAdapter();
-            if (currntValue == 0)
+            if  (currntValue == 0)
             {
-                DialogResult result = MessageBox.Show("test", "test2", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult result = MessageBox.Show("Удаление", "Пометить запись на удаление?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == System.Windows.Forms.DialogResult.Yes) ;
                 {
 
-                    var celValue = dataGridView1.Rows[rowIndex].Cells["Наименование"].Value.ToString();
-
-                    adapter.Del(1, celValue);
-                    dataGridView1.CurrentRow.DefaultCellStyle.BackColor = Color.Red;
+                    int curvalue = (int)(dataGridView1.Rows[rowIndex].Cells["Id"].Value);
+                    dataGridView1.Rows[rowIndex].Cells["Статус_строки"].Value = 1;
+                    adapter.DelById(1, curvalue);
+                    MainForm main = this.MdiParent as MainForm;
+                    //main.global.renewRegsTable();
+                    dataGridView1.CurrentRow.DefaultCellStyle.BackColor = Color.Gray;
+                    dataGridView1.CurrentRow.ReadOnly = true;
                 }
             }
             else
             {
-                var celvalue = dataGridView1.Rows[rowIndex].Cells["Наименование"].Value.ToString();
-                adapter.Del(0, celvalue);
-                dataGridView1.CurrentRow.DefaultCellStyle.BackColor = Color.White;
+                
+                DialogResult result = MessageBox.Show("Отменить удаление", "Отменить пометку записи?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == System.Windows.Forms.DialogResult.Yes)
+                {
+
+                    int curvalue = (int)(dataGridView1.Rows[rowIndex].Cells["Id"].Value);
+                    dataGridView1.Rows[rowIndex].Cells["Статус_строки"].Value = 0;
+                    adapter.DelById(0, curvalue);
+                    //main.global.renewRegsTable();
+                    dataGridView1.CurrentRow.DefaultCellStyle.BackColor = Color.White;
+                    dataGridView1.CurrentRow.ReadOnly = false;
+                }
             }
             
-           //string data = dataGridView1.Rows[rowIndex].
-
 
         }
 
@@ -342,6 +352,94 @@ namespace VikCenter
         private void toolStripComboBox1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        //пометка на удаление аренды 
+        private void toolStripButton10_Click(object sender, EventArgs e)
+        {
+            int rowIndex = dataGridView3.CurrentCell.RowIndex;
+            int currntValue = byte.Parse(dataGridView3.Rows[rowIndex].Cells["Статус_строки"].Value.ToString());
+
+            //РегистраторыTableAdapter adapter = new РегистраторыTableAdapter();
+            Аренда_адресовTableAdapter adapter = new Аренда_адресовTableAdapter();
+            if (currntValue == 0)
+            {
+                DialogResult result = MessageBox.Show("Удаление", "Пометить запись на удаление?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == System.Windows.Forms.DialogResult.Yes) ;
+                {
+
+                    int curvalue = (int)(dataGridView3.Rows[rowIndex].Cells["Id"].Value);
+                    dataGridView3.Rows[rowIndex].Cells["Статус_строки"].Value = 1;
+                    adapter.DelById(1, curvalue);
+                    MainForm main = this.MdiParent as MainForm;
+                    main.global.renewArendaTable();
+                    dataGridView3.CurrentRow.DefaultCellStyle.BackColor = Color.Gray;
+                    dataGridView3.CurrentRow.ReadOnly = true;
+                }
+            }
+            else
+            {
+
+                DialogResult result = MessageBox.Show("Отменить удаление", "Отменить пометку записи?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == System.Windows.Forms.DialogResult.Yes)
+                {
+
+                    int curvalue = (int)(dataGridView3.Rows[rowIndex].Cells["Id"].Value);
+                    dataGridView3.Rows[rowIndex].Cells["Статус_строки"].Value = 0;
+                    adapter.DelById(0, curvalue);
+                    main.global.renewArendaTable();
+                    dataGridView3.CurrentRow.DefaultCellStyle.BackColor = Color.White;
+                    dataGridView3.CurrentRow.ReadOnly = false;
+                }
+            }
+        }
+
+        private void dataGridView1_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            int status = 0;
+            try
+            {
+                status = int.Parse(dataGridView1.Rows[e.RowIndex].Cells["Статус_строки"].Value.ToString());
+            }
+            catch (Exception)
+            {
+                
+            }
+
+            if (status == 0)
+            {
+                dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White;
+                //dataGridView1.Rows[e.RowIndex].ReadOnly = true;
+            }
+            if (status == 1)
+            {
+                dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Gray;
+                //dataGridView1.Rows[e.RowIndex].ReadOnly = false;
+            }
+        }
+
+        private void dataGridView3_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            int status = 0;
+            try
+            {
+                status = int.Parse(dataGridView3.Rows[e.RowIndex].Cells["Статус_строки"].Value.ToString());
+            }
+            catch (Exception)
+            {
+
+            }
+
+            if (status == 0)
+            {
+                dataGridView3.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White;
+                //dataGridView3.Rows[e.RowIndex].ReadOnly = true;
+            }
+            if (status == 1)
+            {
+                dataGridView3.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Gray;
+               // dataGridView3.Rows[e.RowIndex].ReadOnly = false;
+            }
         }
 
     }

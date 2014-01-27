@@ -149,12 +149,31 @@ namespace VikCenter
 
         internal void renewRegsTable()
         {
-            regAdapter.Update(dataSet.Регистраторы);
+            try
+            {
+                dataSet.EndInit();
+                regAdapter.Update(dataSet.Регистраторы);
+            }
+            catch (DBConcurrencyException)
+            {
+                
+                
+            }
+
         }
 
         internal void renewArendaTable()
         {
-            arendaAdapter.Update(dataSet.Аренда_адресов);
+            try
+            {
+                arendaAdapter.Update(dataSet.Аренда_адресов);
+            }
+            catch (DBConcurrencyException)
+            {
+                
+                
+            }
+            
         }
     }
 }

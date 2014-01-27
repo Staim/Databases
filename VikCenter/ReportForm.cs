@@ -79,9 +79,9 @@ namespace VikCenter
             datagridview1.Columns["Статус_строки"].Visible = false;
             datagridview1.Columns["Наименование"].HeaderText = "Организация";
 
-            datagridview1.ColumnHeadersDefaultCellStyle.Font = new Font(new FontFamily("Arial"), 12, FontStyle.Bold);
+            datagridview1.ColumnHeadersDefaultCellStyle.Font = new Font(new FontFamily("Arial"), 10, FontStyle.Bold);
             datagridview1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            datagridview1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            datagridview1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             datagridview1.ReadOnly = true;
             datagridview1.Columns["Сумма"].DefaultCellStyle.Format = "C";
             datagridview1.Columns["Процент"].DefaultCellStyle.Format = "C";
