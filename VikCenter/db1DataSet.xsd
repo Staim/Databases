@@ -142,6 +142,17 @@ WHERE        (Id = ?)</CommandText>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
+              <DbSource ConnectionRef="db1ConnectionString3 (Settings)" DbObjectName="Аренда_адресов" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy1" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetDataBy1" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="FillBy">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        [Аренда_адресов].Наименование, [Аренда_адресов].Регистратор, [Аренда_адресов].[№Договора], [Аренда_адресов].Сумма, 
+                         [Аренда_адресов].[Дата_платежа]
+FROM            ([Аренда_адресов] INNER JOIN
+                         Регистраторы ON [Аренда_адресов].Регистратор = Регистраторы.Наименование)</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
             </Sources>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ЛогиныTableAdapter" GeneratorDataComponentClassName="ЛогиныTableAdapter" Name="Логины" UserDataComponentName="ЛогиныTableAdapter">
@@ -446,7 +457,7 @@ WHERE        (Id = ?)</CommandText>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="db1ConnectionString3 (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DelById" Modifier="Public" Name="DelById" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="DelById">
+              <DbSource ConnectionRef="db1ConnectionString3 (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DelById" Modifier="Public" Name="DelById" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="DelById">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE       Регистраторы
@@ -459,7 +470,7 @@ WHERE        (Id = ?)</CommandText>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="db1ConnectionString3 (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SetDelete" Modifier="Public" Name="SetDelete" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="SetDelete">
+              <DbSource ConnectionRef="db1ConnectionString3 (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SetDelete" Modifier="Public" Name="SetDelete" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="SetDelete">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE `Регистраторы` SET  `Статус_строки` = ? WHERE ((? = 1 AND `Id` IS NULL) OR (`Id` = ?))</CommandText>
@@ -518,6 +529,31 @@ WHERE        (Id = ?)</CommandText>
             <Mappings>
               <Mapping SourceColumn="Id" DataSetColumn="Id" />
               <Mapping SourceColumn="Станция" DataSetColumn="Станция" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="JoinTableTableAdapter" GeneratorDataComponentClassName="JoinTableTableAdapter" Name="JoinTable" UserDataComponentName="JoinTableTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="db1ConnectionString3 (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        [Аренда_адресов].Наименование, [Аренда_адресов].Регистратор, [Аренда_адресов].[№Договора], [Аренда_адресов].Сумма, 
+                         [Аренда_адресов].[Дата_платежа], Регистраторы.[Менеджер_хол_звонок], Регистраторы.[Менеджер_встреча]
+FROM            ([Аренда_адресов] INNER JOIN
+                         Регистраторы ON [Аренда_адресов].Регистратор = Регистраторы.Наименование)</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Наименование" DataSetColumn="Наименование" />
+              <Mapping SourceColumn="Регистратор" DataSetColumn="Регистратор" />
+              <Mapping SourceColumn="№Договора" DataSetColumn="№Договора" />
+              <Mapping SourceColumn="Сумма" DataSetColumn="Сумма" />
+              <Mapping SourceColumn="Дата_платежа" DataSetColumn="Дата_платежа" />
+              <Mapping SourceColumn="Менеджер_хол_звонок" DataSetColumn="Менеджер_хол_звонок" />
+              <Mapping SourceColumn="Менеджер_встреча" DataSetColumn="Менеджер_встреча" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -748,6 +784,50 @@ WHERE        (Id = ?)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="JoinTable" msprop:Generator_TableClassName="JoinTableDataTable" msprop:Generator_TableVarName="tableJoinTable" msprop:Generator_TablePropName="JoinTable" msprop:Generator_RowDeletingName="JoinTableRowDeleting" msprop:Generator_RowChangingName="JoinTableRowChanging" msprop:Generator_RowEvHandlerName="JoinTableRowChangeEventHandler" msprop:Generator_RowDeletedName="JoinTableRowDeleted" msprop:Generator_UserTableName="JoinTable" msprop:Generator_RowChangedName="JoinTableRowChanged" msprop:Generator_RowEvArgName="JoinTableRowChangeEvent" msprop:Generator_RowClassName="JoinTableRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Наименование" msprop:Generator_ColumnVarNameInTable="columnНаименование" msprop:Generator_ColumnPropNameInRow="Наименование" msprop:Generator_ColumnPropNameInTable="НаименованиеColumn" msprop:Generator_UserColumnName="Наименование" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Регистратор" msprop:Generator_ColumnVarNameInTable="columnРегистратор" msprop:Generator_ColumnPropNameInRow="Регистратор" msprop:Generator_ColumnPropNameInTable="РегистраторColumn" msprop:Generator_UserColumnName="Регистратор" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x2116_Договора" msprop:Generator_ColumnVarNameInTable="_column_Договора" msprop:Generator_ColumnPropNameInRow="__Договора" msprop:Generator_ColumnPropNameInTable="__ДоговораColumn" msprop:Generator_UserColumnName="№Договора" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Сумма" msprop:Generator_ColumnVarNameInTable="columnСумма" msprop:Generator_ColumnPropNameInRow="Сумма" msprop:Generator_ColumnPropNameInTable="СуммаColumn" msprop:Generator_UserColumnName="Сумма" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Дата_платежа" msprop:Generator_ColumnVarNameInTable="columnДата_платежа" msprop:Generator_ColumnPropNameInRow="Дата_платежа" msprop:Generator_ColumnPropNameInTable="Дата_платежаColumn" msprop:Generator_UserColumnName="Дата_платежа" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Менеджер_хол_звонок" msprop:Generator_ColumnVarNameInTable="columnМенеджер_хол_звонок" msprop:Generator_ColumnPropNameInRow="Менеджер_хол_звонок" msprop:Generator_ColumnPropNameInTable="Менеджер_хол_звонокColumn" msprop:Generator_UserColumnName="Менеджер_хол_звонок" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Менеджер_встреча" msprop:Generator_ColumnVarNameInTable="columnМенеджер_встреча" msprop:Generator_ColumnPropNameInRow="Менеджер_встреча" msprop:Generator_ColumnPropNameInTable="Менеджер_встречаColumn" msprop:Generator_UserColumnName="Менеджер_встреча" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0025_Мен_встреча" msdata:ReadOnly="true" msdata:Expression="Сумма * 0.05" msprop:Generator_ColumnVarNameInTable="_column_Мен_встреча" msprop:Generator_ColumnPropNameInRow="__Мен_встреча" msprop:Generator_ColumnPropNameInTable="__Мен_встречаColumn" msprop:Generator_UserColumnName="%Мен_встреча" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -774,6 +854,7 @@ WHERE        (Id = ?)</CommandText>
   <xs:annotation>
     <xs:appinfo>
       <msdata:Relationship name="РегистраторыАренда_адресов" msdata:parent="Регистраторы" msdata:child="Аренда_адресов" msdata:parentkey="Наименование" msdata:childkey="Регистратор" msprop:Generator_UserChildTable="Аренда_адресов" msprop:Generator_ChildPropName="GetАренда_адресовRows" msprop:Generator_UserRelationName="РегистраторыАренда_адресов" msprop:Generator_RelationVarName="relationРегистраторыАренда_адресов" msprop:Generator_UserParentTable="Регистраторы" msprop:Generator_ParentPropName="РегистраторыRow" />
+      <msdata:Relationship name="РегистраторыАренда_адресов1" msdata:parent="Регистраторы" msdata:child="JoinTable" msdata:parentkey="Наименование" msdata:childkey="Регистратор" msprop:Generator_UserChildTable="JoinTable" msprop:Generator_ChildPropName="GetJoinTableRows" msprop:Generator_UserRelationName="РегистраторыАренда_адресов1" msprop:Generator_ParentPropName="РегистраторыRow" msprop:Generator_RelationVarName="relationРегистраторыАренда_адресов1" msprop:Generator_UserParentTable="Регистраторы" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

@@ -22,3 +22,5 @@ C:\Users\krl\Desktop\project\Databases\VikCenter\obj\Debug\VikCenter.csproj.Gene
 C:\Users\krl\Desktop\project\Databases\VikCenter\obj\Debug\VikCenter.arenda.resources
 C:\Users\krl\Desktop\project\Databases\VikCenter\obj\Debug\VikCenter.Regmod.resources
 C:\Users\krl\Desktop\project\Databases\VikCenter\obj\Debug\VikCenter.Report.resources
+C:\Users\krl\Desktop\project\Databases\VikCenter\obj\Debug\VikCenter.RowInfoForm.resources
+C:\Users\krl\Desktop\project\Databases\VikCenter\obj\Debug\VikCenter.Form1.resources

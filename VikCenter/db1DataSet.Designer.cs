@@ -34,7 +34,11 @@ namespace VikCenter {
         
         private Станции_метроDataTable tableСтанции_метро;
         
+        private JoinTableDataTable tableJoinTable;
+        
         private global::System.Data.DataRelation relationРегистраторыАренда_адресов;
+        
+        private global::System.Data.DataRelation relationРегистраторыАренда_адресов1;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -82,6 +86,9 @@ namespace VikCenter {
                 }
                 if ((ds.Tables["Станции_метро"] != null)) {
                     base.Tables.Add(new Станции_метроDataTable(ds.Tables["Станции_метро"]));
+                }
+                if ((ds.Tables["JoinTable"] != null)) {
+                    base.Tables.Add(new JoinTableDataTable(ds.Tables["JoinTable"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -149,6 +156,16 @@ namespace VikCenter {
         public Станции_метроDataTable Станции_метро {
             get {
                 return this.tableСтанции_метро;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public JoinTableDataTable JoinTable {
+            get {
+                return this.tableJoinTable;
             }
         }
         
@@ -235,6 +252,9 @@ namespace VikCenter {
                 if ((ds.Tables["Станции_метро"] != null)) {
                     base.Tables.Add(new Станции_метроDataTable(ds.Tables["Станции_метро"]));
                 }
+                if ((ds.Tables["JoinTable"] != null)) {
+                    base.Tables.Add(new JoinTableDataTable(ds.Tables["JoinTable"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -298,7 +318,14 @@ namespace VikCenter {
                     this.tableСтанции_метро.InitVars();
                 }
             }
+            this.tableJoinTable = ((JoinTableDataTable)(base.Tables["JoinTable"]));
+            if ((initTable == true)) {
+                if ((this.tableJoinTable != null)) {
+                    this.tableJoinTable.InitVars();
+                }
+            }
             this.relationРегистраторыАренда_адресов = this.Relations["РегистраторыАренда_адресов"];
+            this.relationРегистраторыАренда_адресов1 = this.Relations["РегистраторыАренда_адресов1"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -319,10 +346,16 @@ namespace VikCenter {
             base.Tables.Add(this.tableРегистраторы);
             this.tableСтанции_метро = new Станции_метроDataTable();
             base.Tables.Add(this.tableСтанции_метро);
+            this.tableJoinTable = new JoinTableDataTable(false);
+            base.Tables.Add(this.tableJoinTable);
             this.relationРегистраторыАренда_адресов = new global::System.Data.DataRelation("РегистраторыАренда_адресов", new global::System.Data.DataColumn[] {
                         this.tableРегистраторы.НаименованиеColumn}, new global::System.Data.DataColumn[] {
                         this.tableАренда_адресов.РегистраторColumn}, false);
             this.Relations.Add(this.relationРегистраторыАренда_адресов);
+            this.relationРегистраторыАренда_адресов1 = new global::System.Data.DataRelation("РегистраторыАренда_адресов1", new global::System.Data.DataColumn[] {
+                        this.tableРегистраторы.НаименованиеColumn}, new global::System.Data.DataColumn[] {
+                        this.tableJoinTable.РегистраторColumn}, false);
+            this.Relations.Add(this.relationРегистраторыАренда_адресов1);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -352,6 +385,12 @@ namespace VikCenter {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeСтанции_метро() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeJoinTable() {
             return false;
         }
         
@@ -414,6 +453,7 @@ namespace VikCenter {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitExpressions() {
             this.Аренда_адресов.ПроцентColumn.Expression = "Сумма * 0.05";
+            this.JoinTable.@__Мен_встречаColumn.Expression = "Сумма * 0.05";
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -430,6 +470,9 @@ namespace VikCenter {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void Станции_метроRowChangeEventHandler(object sender, Станции_метроRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void JoinTableRowChangeEventHandler(object sender, JoinTableRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -2280,6 +2323,400 @@ namespace VikCenter {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class JoinTableDataTable : global::System.Data.TypedTableBase<JoinTableRow> {
+            
+            private global::System.Data.DataColumn columnНаименование;
+            
+            private global::System.Data.DataColumn columnРегистратор;
+            
+            private global::System.Data.DataColumn _column_Договора;
+            
+            private global::System.Data.DataColumn columnСумма;
+            
+            private global::System.Data.DataColumn columnДата_платежа;
+            
+            private global::System.Data.DataColumn columnМенеджер_хол_звонок;
+            
+            private global::System.Data.DataColumn columnМенеджер_встреча;
+            
+            private global::System.Data.DataColumn _column_Мен_встреча;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public JoinTableDataTable() : 
+                    this(false) {
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public JoinTableDataTable(bool initExpressions) {
+                this.TableName = "JoinTable";
+                this.BeginInit();
+                this.InitClass();
+                if ((initExpressions == true)) {
+                    this.InitExpressions();
+                }
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal JoinTableDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected JoinTableDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn НаименованиеColumn {
+                get {
+                    return this.columnНаименование;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn РегистраторColumn {
+                get {
+                    return this.columnРегистратор;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn @__ДоговораColumn {
+                get {
+                    return this._column_Договора;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn СуммаColumn {
+                get {
+                    return this.columnСумма;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Дата_платежаColumn {
+                get {
+                    return this.columnДата_платежа;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Менеджер_хол_звонокColumn {
+                get {
+                    return this.columnМенеджер_хол_звонок;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Менеджер_встречаColumn {
+                get {
+                    return this.columnМенеджер_встреча;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn @__Мен_встречаColumn {
+                get {
+                    return this._column_Мен_встреча;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public JoinTableRow this[int index] {
+                get {
+                    return ((JoinTableRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event JoinTableRowChangeEventHandler JoinTableRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event JoinTableRowChangeEventHandler JoinTableRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event JoinTableRowChangeEventHandler JoinTableRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event JoinTableRowChangeEventHandler JoinTableRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddJoinTableRow(JoinTableRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public JoinTableRow AddJoinTableRow(string Наименование, РегистраторыRow parentРегистраторыRowByРегистраторыАренда_адресов1, string @__Договора, decimal Сумма, System.DateTime Дата_платежа, string Менеджер_хол_звонок, string Менеджер_встреча, decimal @__Мен_встреча) {
+                JoinTableRow rowJoinTableRow = ((JoinTableRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        Наименование,
+                        null,
+                        @__Договора,
+                        Сумма,
+                        Дата_платежа,
+                        Менеджер_хол_звонок,
+                        Менеджер_встреча,
+                        @__Мен_встреча};
+                if ((parentРегистраторыRowByРегистраторыАренда_адресов1 != null)) {
+                    columnValuesArray[1] = parentРегистраторыRowByРегистраторыАренда_адресов1[1];
+                }
+                rowJoinTableRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowJoinTableRow);
+                return rowJoinTableRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public JoinTableRow AddJoinTableRow(string Наименование, РегистраторыRow parentРегистраторыRowByРегистраторыАренда_адресов1, string @__Договора, decimal Сумма, System.DateTime Дата_платежа, string Менеджер_хол_звонок, string Менеджер_встреча) {
+                JoinTableRow rowJoinTableRow = ((JoinTableRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        Наименование,
+                        null,
+                        @__Договора,
+                        Сумма,
+                        Дата_платежа,
+                        Менеджер_хол_звонок,
+                        Менеджер_встреча,
+                        null};
+                if ((parentРегистраторыRowByРегистраторыАренда_адресов1 != null)) {
+                    columnValuesArray[1] = parentРегистраторыRowByРегистраторыАренда_адресов1[1];
+                }
+                rowJoinTableRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowJoinTableRow);
+                return rowJoinTableRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                JoinTableDataTable cln = ((JoinTableDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new JoinTableDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnНаименование = base.Columns["Наименование"];
+                this.columnРегистратор = base.Columns["Регистратор"];
+                this._column_Договора = base.Columns["№Договора"];
+                this.columnСумма = base.Columns["Сумма"];
+                this.columnДата_платежа = base.Columns["Дата_платежа"];
+                this.columnМенеджер_хол_звонок = base.Columns["Менеджер_хол_звонок"];
+                this.columnМенеджер_встреча = base.Columns["Менеджер_встреча"];
+                this._column_Мен_встреча = base.Columns["%Мен_встреча"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnНаименование = new global::System.Data.DataColumn("Наименование", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnНаименование);
+                this.columnРегистратор = new global::System.Data.DataColumn("Регистратор", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnРегистратор);
+                this._column_Договора = new global::System.Data.DataColumn("№Договора", typeof(string), null, global::System.Data.MappingType.Element);
+                this._column_Договора.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_column_Договора");
+                this._column_Договора.ExtendedProperties.Add("Generator_UserColumnName", "№Договора");
+                base.Columns.Add(this._column_Договора);
+                this.columnСумма = new global::System.Data.DataColumn("Сумма", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnСумма);
+                this.columnДата_платежа = new global::System.Data.DataColumn("Дата_платежа", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnДата_платежа);
+                this.columnМенеджер_хол_звонок = new global::System.Data.DataColumn("Менеджер_хол_звонок", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnМенеджер_хол_звонок);
+                this.columnМенеджер_встреча = new global::System.Data.DataColumn("Менеджер_встреча", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnМенеджер_встреча);
+                this._column_Мен_встреча = new global::System.Data.DataColumn("%Мен_встреча", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this._column_Мен_встреча.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_column_Мен_встреча");
+                this._column_Мен_встреча.ExtendedProperties.Add("Generator_UserColumnName", "%Мен_встреча");
+                base.Columns.Add(this._column_Мен_встреча);
+                this.columnНаименование.MaxLength = 100;
+                this.columnРегистратор.MaxLength = 100;
+                this._column_Договора.MaxLength = 8;
+                this.columnМенеджер_хол_звонок.MaxLength = 50;
+                this.columnМенеджер_встреча.MaxLength = 50;
+                this._column_Мен_встреча.ReadOnly = true;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public JoinTableRow NewJoinTableRow() {
+                return ((JoinTableRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new JoinTableRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(JoinTableRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitExpressions() {
+                this.@__Мен_встречаColumn.Expression = "Сумма * 0.05";
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.JoinTableRowChanged != null)) {
+                    this.JoinTableRowChanged(this, new JoinTableRowChangeEvent(((JoinTableRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.JoinTableRowChanging != null)) {
+                    this.JoinTableRowChanging(this, new JoinTableRowChangeEvent(((JoinTableRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.JoinTableRowDeleted != null)) {
+                    this.JoinTableRowDeleted(this, new JoinTableRowChangeEvent(((JoinTableRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.JoinTableRowDeleting != null)) {
+                    this.JoinTableRowDeleting(this, new JoinTableRowChangeEvent(((JoinTableRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveJoinTableRow(JoinTableRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                db1DataSet ds = new db1DataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "JoinTableDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class Аренда_адресовRow : global::System.Data.DataRow {
@@ -3328,6 +3765,17 @@ namespace VikCenter {
                     return ((Аренда_адресовRow[])(base.GetChildRows(this.Table.ChildRelations["РегистраторыАренда_адресов"])));
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public JoinTableRow[] GetJoinTableRows() {
+                if ((this.Table.ChildRelations["РегистраторыАренда_адресов1"] == null)) {
+                    return new JoinTableRow[0];
+                }
+                else {
+                    return ((JoinTableRow[])(base.GetChildRows(this.Table.ChildRelations["РегистраторыАренда_адресов1"])));
+                }
+            }
         }
         
         /// <summary>
@@ -3381,6 +3829,256 @@ namespace VikCenter {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetСтанцияNull() {
                 this[this.tableСтанции_метро.СтанцияColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class JoinTableRow : global::System.Data.DataRow {
+            
+            private JoinTableDataTable tableJoinTable;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal JoinTableRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableJoinTable = ((JoinTableDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Наименование {
+                get {
+                    try {
+                        return ((string)(this[this.tableJoinTable.НаименованиеColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Наименование\' in table \'JoinTable\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableJoinTable.НаименованиеColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Регистратор {
+                get {
+                    try {
+                        return ((string)(this[this.tableJoinTable.РегистраторColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Регистратор\' in table \'JoinTable\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableJoinTable.РегистраторColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string @__Договора {
+                get {
+                    try {
+                        return ((string)(this[this.tableJoinTable.@__ДоговораColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'№Договора\' in table \'JoinTable\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableJoinTable.@__ДоговораColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal Сумма {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableJoinTable.СуммаColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Сумма\' in table \'JoinTable\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableJoinTable.СуммаColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime Дата_платежа {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableJoinTable.Дата_платежаColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Дата_платежа\' in table \'JoinTable\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableJoinTable.Дата_платежаColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Менеджер_хол_звонок {
+                get {
+                    try {
+                        return ((string)(this[this.tableJoinTable.Менеджер_хол_звонокColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Менеджер_хол_звонок\' in table \'JoinTable\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableJoinTable.Менеджер_хол_звонокColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Менеджер_встреча {
+                get {
+                    try {
+                        return ((string)(this[this.tableJoinTable.Менеджер_встречаColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Менеджер_встреча\' in table \'JoinTable\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableJoinTable.Менеджер_встречаColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal @__Мен_встреча {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableJoinTable.@__Мен_встречаColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'%Мен_встреча\' in table \'JoinTable\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableJoinTable.@__Мен_встречаColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public РегистраторыRow РегистраторыRow {
+                get {
+                    return ((РегистраторыRow)(this.GetParentRow(this.Table.ParentRelations["РегистраторыАренда_адресов1"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["РегистраторыАренда_адресов1"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsНаименованиеNull() {
+                return this.IsNull(this.tableJoinTable.НаименованиеColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetНаименованиеNull() {
+                this[this.tableJoinTable.НаименованиеColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsРегистраторNull() {
+                return this.IsNull(this.tableJoinTable.РегистраторColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetРегистраторNull() {
+                this[this.tableJoinTable.РегистраторColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is__ДоговораNull() {
+                return this.IsNull(this.tableJoinTable.@__ДоговораColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set__ДоговораNull() {
+                this[this.tableJoinTable.@__ДоговораColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsСуммаNull() {
+                return this.IsNull(this.tableJoinTable.СуммаColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetСуммаNull() {
+                this[this.tableJoinTable.СуммаColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsДата_платежаNull() {
+                return this.IsNull(this.tableJoinTable.Дата_платежаColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetДата_платежаNull() {
+                this[this.tableJoinTable.Дата_платежаColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsМенеджер_хол_звонокNull() {
+                return this.IsNull(this.tableJoinTable.Менеджер_хол_звонокColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetМенеджер_хол_звонокNull() {
+                this[this.tableJoinTable.Менеджер_хол_звонокColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsМенеджер_встречаNull() {
+                return this.IsNull(this.tableJoinTable.Менеджер_встречаColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetМенеджер_встречаNull() {
+                this[this.tableJoinTable.Менеджер_встречаColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is__Мен_встречаNull() {
+                return this.IsNull(this.tableJoinTable.@__Мен_встречаColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set__Мен_встречаNull() {
+                this[this.tableJoinTable.@__Мен_встречаColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -3540,6 +4238,40 @@ namespace VikCenter {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public Станции_метроRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class JoinTableRowChangeEvent : global::System.EventArgs {
+            
+            private JoinTableRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public JoinTableRowChangeEvent(JoinTableRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public JoinTableRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -3791,7 +4523,7 @@ namespace VikCenter.db1DataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.OleDb.OleDbCommand[2];
+            this._commandCollection = new global::System.Data.OleDb.OleDbCommand[3];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT Id, Наименование, Вид_договора, Адрес, Регистратор, [№Договора], Сумма, Да" +
@@ -3805,6 +4537,13 @@ namespace VikCenter.db1DataSetTableAdapters {
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Статус_строки", global::System.Data.OleDb.OleDbType.UnsignedTinyInt, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Статус_строки", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[1].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Id", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Id", global::System.Data.DataRowVersion.Original, false, null));
+            this._commandCollection[2] = new global::System.Data.OleDb.OleDbCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = @"SELECT        [Аренда_адресов].Наименование, [Аренда_адресов].Регистратор, [Аренда_адресов].[№Договора], [Аренда_адресов].Сумма, 
+                         [Аренда_адресов].[Дата_платежа]
+FROM            ([Аренда_адресов] INNER JOIN
+                         Регистраторы ON [Аренда_адресов].Регистратор = Регистраторы.Наименование)";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3826,6 +4565,30 @@ namespace VikCenter.db1DataSetTableAdapters {
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual db1DataSet.Аренда_адресовDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            db1DataSet.Аренда_адресовDataTable dataTable = new db1DataSet.Аренда_адресовDataTable(true);
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillBy(db1DataSet.Аренда_адресовDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual db1DataSet.Аренда_адресовDataTable GetDataBy1() {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             db1DataSet.Аренда_адресовDataTable dataTable = new db1DataSet.Аренда_адресовDataTable(true);
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -6549,6 +7312,182 @@ namespace VikCenter.db1DataSetTableAdapters {
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(string Станция, global::System.Nullable<int> Original_Id, string Original_Станция) {
             return this.Update(Original_Id, Станция, Original_Id, Original_Станция);
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class JoinTableTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.OleDb.OleDbDataAdapter _adapter;
+        
+        private global::System.Data.OleDb.OleDbConnection _connection;
+        
+        private global::System.Data.OleDb.OleDbTransaction _transaction;
+        
+        private global::System.Data.OleDb.OleDbCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public JoinTableTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::System.Data.OleDb.OleDbDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.OleDb.OleDbConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.OleDb.OleDbCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.OleDb.OleDbTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::System.Data.OleDb.OleDbCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.OleDb.OleDbDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "JoinTable";
+            tableMapping.ColumnMappings.Add("Наименование", "Наименование");
+            tableMapping.ColumnMappings.Add("Регистратор", "Регистратор");
+            tableMapping.ColumnMappings.Add("№Договора", "№Договора");
+            tableMapping.ColumnMappings.Add("Сумма", "Сумма");
+            tableMapping.ColumnMappings.Add("Дата_платежа", "Дата_платежа");
+            tableMapping.ColumnMappings.Add("Менеджер_хол_звонок", "Менеджер_хол_звонок");
+            tableMapping.ColumnMappings.Add("Менеджер_встреча", "Менеджер_встреча");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.OleDb.OleDbConnection();
+            this._connection.ConnectionString = global::VikCenter.Properties.Settings.Default.db1ConnectionString3;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
+            this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = @"SELECT        [Аренда_адресов].Наименование, [Аренда_адресов].Регистратор, [Аренда_адресов].[№Договора], [Аренда_адресов].Сумма, 
+                         [Аренда_адресов].[Дата_платежа], Регистраторы.[Менеджер_хол_звонок], Регистраторы.[Менеджер_встреча]
+FROM            ([Аренда_адресов] INNER JOIN
+                         Регистраторы ON [Аренда_адресов].Регистратор = Регистраторы.Наименование)";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(db1DataSet.JoinTableDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual db1DataSet.JoinTableDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            db1DataSet.JoinTableDataTable dataTable = new db1DataSet.JoinTableDataTable(true);
+            this.Adapter.Fill(dataTable);
+            return dataTable;
         }
     }
     

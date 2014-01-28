@@ -80,6 +80,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>db1DataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RowInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RowInfoForm.Designer.cs">
+      <DependentUpon>RowInfoForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,6 +126,12 @@
     </Compile>
     <EmbeddedResource Include="arenda.resx">
       <DependentUpon>arenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RowInfoForm.resx">
+      <DependentUpon>RowInfoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportForm.resx">
       <DependentUpon>ReportForm.cs</DependentUpon>

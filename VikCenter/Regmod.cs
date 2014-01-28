@@ -442,5 +442,29 @@ namespace VikCenter
             }
         }
 
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+            {
+                Point p = Cursor.Position;
+                contextMenuStrip1.Show(p);
+            }
+        }
+
+        private void информацияОИзмененииToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string s = dataGridView1.CurrentRow.Cells["Создание_строки"].Value.ToString();
+            string s2 = dataGridView1.CurrentRow.Cells["Создание_логин"].Value.ToString();
+            string s3 = dataGridView1.CurrentRow.Cells["Редактирование_строки"].Value.ToString();
+            string s4 = dataGridView1.CurrentRow.Cells["Редактирование_логин"].Value.ToString();
+            RowInfoForm info = new RowInfoForm(s,s2,s3,s4);
+            info.ShowDialog();
+        }
+
     }
 }
