@@ -1,0 +1,16 @@
+C:\Users\krl\Desktop\project\Databases\VikCenter\bin\Release\VikCenter.exe.config
+C:\Users\krl\Desktop\project\Databases\VikCenter\bin\Release\VikCenter.exe
+C:\Users\krl\Desktop\project\Databases\VikCenter\bin\Release\VikCenter.pdb
+C:\Users\krl\Desktop\project\Databases\VikCenter\obj\Release\VikCenter.csprojResolveAssemblyReference.cache
+C:\Users\krl\Desktop\project\Databases\VikCenter\obj\Release\VikCenter.arenda.resources
+C:\Users\krl\Desktop\project\Databases\VikCenter\obj\Release\VikCenter.Form1.resources
+C:\Users\krl\Desktop\project\Databases\VikCenter\obj\Release\VikCenter.RowInfoForm.resources
+C:\Users\krl\Desktop\project\Databases\VikCenter\obj\Release\VikCenter.Report.resources
+C:\Users\krl\Desktop\project\Databases\VikCenter\obj\Release\VikCenter.LoginForm.resources
+C:\Users\krl\Desktop\project\Databases\VikCenter\obj\Release\VikCenter.MainForm.resources
+C:\Users\krl\Desktop\project\Databases\VikCenter\obj\Release\VikCenter.Properties.Resources.resources
+C:\Users\krl\Desktop\project\Databases\VikCenter\obj\Release\VikCenter.RegistratorsForm.resources
+C:\Users\krl\Desktop\project\Databases\VikCenter\obj\Release\VikCenter.Regmod.resources
+C:\Users\krl\Desktop\project\Databases\VikCenter\obj\Release\VikCenter.csproj.GenerateResource.Cache
+C:\Users\krl\Desktop\project\Databases\VikCenter\obj\Release\VikCenter.exe
+C:\Users\krl\Desktop\project\Databases\VikCenter\obj\Release\VikCenter.pdb
