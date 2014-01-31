@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Drawing;
+//using System.Drawing;
 using VikCenter.db1DataSetTableAdapters;
 
 namespace VikCenter
@@ -292,14 +292,16 @@ namespace VikCenter
             if  (currntValue == 0)
             {
                 DialogResult result = MessageBox.Show("Удаление", "Пометить запись на удаление?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (result == System.Windows.Forms.DialogResult.Yes) ;
+                if (result == System.Windows.Forms.DialogResult.Yes) 
                 {
 
                     int curvalue = (int)(dataGridView1.Rows[rowIndex].Cells["Id"].Value);
-                    dataGridView1.Rows[rowIndex].Cells["Статус_строки"].Value = 1;
+                    //dataGridView1.Rows[rowIndex].Cells["Статус_строки"].Value = 1;
                     adapter.DelById(1, curvalue);
                     MainForm main = this.MdiParent as MainForm;
-                    //main.global.renewRegsTable();
+                    main.global.renewRegsTable();
+                    //new code
+                    adapter.Fill(main.global.dataSet.Регистраторы);
                     dataGridView1.CurrentRow.DefaultCellStyle.BackColor = Color.Gray;
                     dataGridView1.CurrentRow.ReadOnly = true;
                 }
@@ -312,9 +314,10 @@ namespace VikCenter
                 {
 
                     int curvalue = (int)(dataGridView1.Rows[rowIndex].Cells["Id"].Value);
-                    dataGridView1.Rows[rowIndex].Cells["Статус_строки"].Value = 0;
+                    //dataGridView1.Rows[rowIndex].Cells["Статус_строки"].Value = 0;
                     adapter.DelById(0, curvalue);
-                    //main.global.renewRegsTable();
+                    main.global.renewRegsTable();
+                    adapter.Fill(main.global.dataSet.Регистраторы);
                     dataGridView1.CurrentRow.DefaultCellStyle.BackColor = Color.White;
                     dataGridView1.CurrentRow.ReadOnly = false;
                 }
@@ -365,7 +368,7 @@ namespace VikCenter
             if (currntValue == 0)
             {
                 DialogResult result = MessageBox.Show("Удаление", "Пометить запись на удаление?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (result == System.Windows.Forms.DialogResult.Yes) ;
+                if (result == System.Windows.Forms.DialogResult.Yes) 
                 {
 
                     int curvalue = (int)(dataGridView3.Rows[rowIndex].Cells["Id"].Value);
@@ -373,6 +376,7 @@ namespace VikCenter
                     adapter.DelById(1, curvalue);
                     MainForm main = this.MdiParent as MainForm;
                     main.global.renewArendaTable();
+                    adapter.Fill(main.global.dataSet.Аренда_адресов);
                     dataGridView3.CurrentRow.DefaultCellStyle.BackColor = Color.Gray;
                     dataGridView3.CurrentRow.ReadOnly = true;
                 }
@@ -388,6 +392,7 @@ namespace VikCenter
                     dataGridView3.Rows[rowIndex].Cells["Статус_строки"].Value = 0;
                     adapter.DelById(0, curvalue);
                     main.global.renewArendaTable();
+                    adapter.Fill(main.global.dataSet.Аренда_адресов);
                     dataGridView3.CurrentRow.DefaultCellStyle.BackColor = Color.White;
                     dataGridView3.CurrentRow.ReadOnly = false;
                 }

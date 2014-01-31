@@ -16,7 +16,7 @@ namespace VikCenter
     {
         private bool verify = false;
         private bool verify_change = false;
-        private string _loginIfo = "";
+        
         public LoginInfo loginInfo;
         private BinaryFormatter binaryFormatter;
         private string filePath;

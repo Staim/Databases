@@ -839,6 +839,7 @@ namespace VikCenter {
                 this._column_Договора.MaxLength = 8;
                 this.columnСоздание_логин.MaxLength = 255;
                 this.columnРедактирование_логин.MaxLength = 255;
+                this.columnСтатус_строки.DefaultValue = ((byte)(0));
                 this.columnПроцент.ReadOnly = true;
             }
             
@@ -1923,6 +1924,7 @@ namespace VikCenter {
                 this.columnМенеджер_встреча.MaxLength = 50;
                 this.columnСоздание_логин.MaxLength = 50;
                 this.columnРедактирование_логин.MaxLength = 50;
+                this.columnСтатус_строки.DefaultValue = ((byte)(0));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

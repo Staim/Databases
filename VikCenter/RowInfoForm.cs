@@ -19,10 +19,15 @@ namespace VikCenter
         public RowInfoForm(string s1, string s2, string s3, string s4)
         {
             InitializeComponent();
-            label1.Text = label1.Text + s1;
-            label2.Text = label2.Text + s2;
-            label3.Text = label3.Text + s3;
-            label4.Text = label4.Text + s4;
+            cLoginLabel.Text = s2;
+            createTimeLabel.Text = s1;
+            eLoginLabel.Text = s4;
+            editTimeLabel.Text = s3;
+        }
+
+        private void RowInfoForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

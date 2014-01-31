@@ -565,7 +565,7 @@ FROM            ([Аренда_адресов] INNER JOIN
   <xs:element name="db1DataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="db1DataSet" msprop:Generator_UserDSName="db1DataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Аренда_адресов" msprop:Generator_TableClassName="Аренда_адресовDataTable" msprop:Generator_TableVarName="tableАренда_адресов" msprop:Generator_TablePropName="Аренда_адресов" msprop:Generator_RowDeletingName="Аренда_адресовRowDeleting" msprop:Generator_RowChangingName="Аренда_адресовRowChanging" msprop:Generator_RowEvHandlerName="Аренда_адресовRowChangeEventHandler" msprop:Generator_RowDeletedName="Аренда_адресовRowDeleted" msprop:Generator_UserTableName="Аренда_адресов" msprop:Generator_RowChangedName="Аренда_адресовRowChanged" msprop:Generator_RowEvArgName="Аренда_адресовRowChangeEvent" msprop:Generator_RowClassName="Аренда_адресовRow">
+        <xs:element name="Аренда_адресов" msprop:Generator_TableClassName="Аренда_адресовDataTable" msprop:Generator_TableVarName="tableАренда_адресов" msprop:Generator_RowChangedName="Аренда_адресовRowChanged" msprop:Generator_TablePropName="Аренда_адресов" msprop:Generator_RowDeletingName="Аренда_адресовRowDeleting" msprop:Generator_RowChangingName="Аренда_адресовRowChanging" msprop:Generator_RowEvHandlerName="Аренда_адресовRowChangeEventHandler" msprop:Generator_RowDeletedName="Аренда_адресовRowDeleted" msprop:Generator_RowClassName="Аренда_адресовRow" msprop:Generator_UserTableName="Аренда_адресов" msprop:Generator_RowEvArgName="Аренда_адресовRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -622,12 +622,12 @@ FROM            ([Аренда_адресов] INNER JOIN
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Статус_строки" msprop:Generator_ColumnVarNameInTable="columnСтатус_строки" msprop:Generator_ColumnPropNameInRow="Статус_строки" msprop:Generator_ColumnPropNameInTable="Статус_строкиColumn" msprop:Generator_UserColumnName="Статус_строки" type="xs:unsignedByte" minOccurs="0" />
+              <xs:element name="Статус_строки" msprop:Generator_ColumnVarNameInTable="columnСтатус_строки" msprop:Generator_ColumnPropNameInRow="Статус_строки" msprop:Generator_ColumnPropNameInTable="Статус_строкиColumn" msprop:Generator_UserColumnName="Статус_строки" type="xs:unsignedByte" default="0" minOccurs="0" />
               <xs:element name="Процент" msdata:ReadOnly="true" msdata:Expression="Сумма * 0.05" msprop:Generator_ColumnVarNameInTable="columnПроцент" msprop:Generator_ColumnPropNameInRow="Процент" msprop:Generator_ColumnPropNameInTable="ПроцентColumn" msprop:Generator_UserColumnName="Процент" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Логины" msprop:Generator_TableClassName="ЛогиныDataTable" msprop:Generator_TableVarName="tableЛогины" msprop:Generator_TablePropName="Логины" msprop:Generator_RowDeletingName="ЛогиныRowDeleting" msprop:Generator_RowChangingName="ЛогиныRowChanging" msprop:Generator_RowEvHandlerName="ЛогиныRowChangeEventHandler" msprop:Generator_RowDeletedName="ЛогиныRowDeleted" msprop:Generator_UserTableName="Логины" msprop:Generator_RowChangedName="ЛогиныRowChanged" msprop:Generator_RowEvArgName="ЛогиныRowChangeEvent" msprop:Generator_RowClassName="ЛогиныRow">
+        <xs:element name="Логины" msprop:Generator_TableClassName="ЛогиныDataTable" msprop:Generator_TableVarName="tableЛогины" msprop:Generator_RowChangedName="ЛогиныRowChanged" msprop:Generator_TablePropName="Логины" msprop:Generator_RowDeletingName="ЛогиныRowDeleting" msprop:Generator_RowChangingName="ЛогиныRowChanging" msprop:Generator_RowEvHandlerName="ЛогиныRowChangeEventHandler" msprop:Generator_RowDeletedName="ЛогиныRowDeleted" msprop:Generator_RowClassName="ЛогиныRow" msprop:Generator_UserTableName="Логины" msprop:Generator_RowEvArgName="ЛогиныRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -655,7 +655,7 @@ FROM            ([Аренда_адресов] INNER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Менеджеры" msprop:Generator_TableClassName="МенеджерыDataTable" msprop:Generator_TableVarName="tableМенеджеры" msprop:Generator_TablePropName="Менеджеры" msprop:Generator_RowDeletingName="МенеджерыRowDeleting" msprop:Generator_RowChangingName="МенеджерыRowChanging" msprop:Generator_RowEvHandlerName="МенеджерыRowChangeEventHandler" msprop:Generator_RowDeletedName="МенеджерыRowDeleted" msprop:Generator_UserTableName="Менеджеры" msprop:Generator_RowChangedName="МенеджерыRowChanged" msprop:Generator_RowEvArgName="МенеджерыRowChangeEvent" msprop:Generator_RowClassName="МенеджерыRow">
+        <xs:element name="Менеджеры" msprop:Generator_TableClassName="МенеджерыDataTable" msprop:Generator_TableVarName="tableМенеджеры" msprop:Generator_RowChangedName="МенеджерыRowChanged" msprop:Generator_TablePropName="Менеджеры" msprop:Generator_RowDeletingName="МенеджерыRowDeleting" msprop:Generator_RowChangingName="МенеджерыRowChanging" msprop:Generator_RowEvHandlerName="МенеджерыRowChangeEventHandler" msprop:Generator_RowDeletedName="МенеджерыRowDeleted" msprop:Generator_RowClassName="МенеджерыRow" msprop:Generator_UserTableName="Менеджеры" msprop:Generator_RowEvArgName="МенеджерыRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ФИО" msprop:Generator_ColumnVarNameInTable="columnФИО" msprop:Generator_ColumnPropNameInRow="ФИО" msprop:Generator_ColumnPropNameInTable="ФИОColumn" msprop:Generator_UserColumnName="ФИО">
@@ -682,7 +682,7 @@ FROM            ([Аренда_адресов] INNER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Регистраторы" msprop:Generator_TableClassName="РегистраторыDataTable" msprop:Generator_TableVarName="tableРегистраторы" msprop:Generator_TablePropName="Регистраторы" msprop:Generator_RowDeletingName="РегистраторыRowDeleting" msprop:Generator_RowChangingName="РегистраторыRowChanging" msprop:Generator_RowEvHandlerName="РегистраторыRowChangeEventHandler" msprop:Generator_RowDeletedName="РегистраторыRowDeleted" msprop:Generator_UserTableName="Регистраторы" msprop:Generator_RowChangedName="РегистраторыRowChanged" msprop:Generator_RowEvArgName="РегистраторыRowChangeEvent" msprop:Generator_RowClassName="РегистраторыRow">
+        <xs:element name="Регистраторы" msprop:Generator_TableClassName="РегистраторыDataTable" msprop:Generator_TableVarName="tableРегистраторы" msprop:Generator_RowChangedName="РегистраторыRowChanged" msprop:Generator_TablePropName="Регистраторы" msprop:Generator_RowDeletingName="РегистраторыRowDeleting" msprop:Generator_RowChangingName="РегистраторыRowChanging" msprop:Generator_RowEvHandlerName="РегистраторыRowChangeEventHandler" msprop:Generator_RowDeletedName="РегистраторыRowDeleted" msprop:Generator_RowClassName="РегистраторыRow" msprop:Generator_UserTableName="Регистраторы" msprop:Generator_RowEvArgName="РегистраторыRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" minOccurs="0" />
@@ -766,11 +766,11 @@ FROM            ([Аренда_адресов] INNER JOIN
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Статус_строки" msprop:Generator_ColumnVarNameInTable="columnСтатус_строки" msprop:Generator_ColumnPropNameInRow="Статус_строки" msprop:Generator_ColumnPropNameInTable="Статус_строкиColumn" msprop:Generator_UserColumnName="Статус_строки" type="xs:unsignedByte" minOccurs="0" />
+              <xs:element name="Статус_строки" msprop:Generator_ColumnVarNameInTable="columnСтатус_строки" msprop:Generator_ColumnPropNameInRow="Статус_строки" msprop:Generator_ColumnPropNameInTable="Статус_строкиColumn" msprop:Generator_UserColumnName="Статус_строки" type="xs:unsignedByte" default="0" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Станции_метро" msprop:Generator_TableClassName="Станции_метроDataTable" msprop:Generator_TableVarName="tableСтанции_метро" msprop:Generator_TablePropName="Станции_метро" msprop:Generator_RowDeletingName="Станции_метроRowDeleting" msprop:Generator_RowChangingName="Станции_метроRowChanging" msprop:Generator_RowEvHandlerName="Станции_метроRowChangeEventHandler" msprop:Generator_RowDeletedName="Станции_метроRowDeleted" msprop:Generator_UserTableName="Станции_метро" msprop:Generator_RowChangedName="Станции_метроRowChanged" msprop:Generator_RowEvArgName="Станции_метроRowChangeEvent" msprop:Generator_RowClassName="Станции_метроRow">
+        <xs:element name="Станции_метро" msprop:Generator_TableClassName="Станции_метроDataTable" msprop:Generator_TableVarName="tableСтанции_метро" msprop:Generator_RowChangedName="Станции_метроRowChanged" msprop:Generator_TablePropName="Станции_метро" msprop:Generator_RowDeletingName="Станции_метроRowDeleting" msprop:Generator_RowChangingName="Станции_метроRowChanging" msprop:Generator_RowEvHandlerName="Станции_метроRowChangeEventHandler" msprop:Generator_RowDeletedName="Станции_метроRowDeleted" msprop:Generator_RowClassName="Станции_метроRow" msprop:Generator_UserTableName="Станции_метро" msprop:Generator_RowEvArgName="Станции_метроRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -784,7 +784,7 @@ FROM            ([Аренда_адресов] INNER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="JoinTable" msprop:Generator_TableClassName="JoinTableDataTable" msprop:Generator_TableVarName="tableJoinTable" msprop:Generator_TablePropName="JoinTable" msprop:Generator_RowDeletingName="JoinTableRowDeleting" msprop:Generator_RowChangingName="JoinTableRowChanging" msprop:Generator_RowEvHandlerName="JoinTableRowChangeEventHandler" msprop:Generator_RowDeletedName="JoinTableRowDeleted" msprop:Generator_UserTableName="JoinTable" msprop:Generator_RowChangedName="JoinTableRowChanged" msprop:Generator_RowEvArgName="JoinTableRowChangeEvent" msprop:Generator_RowClassName="JoinTableRow">
+        <xs:element name="JoinTable" msprop:Generator_TableClassName="JoinTableDataTable" msprop:Generator_TableVarName="tableJoinTable" msprop:Generator_RowChangedName="JoinTableRowChanged" msprop:Generator_TablePropName="JoinTable" msprop:Generator_RowDeletingName="JoinTableRowDeleting" msprop:Generator_RowChangingName="JoinTableRowChanging" msprop:Generator_RowEvHandlerName="JoinTableRowChangeEventHandler" msprop:Generator_RowDeletedName="JoinTableRowDeleted" msprop:Generator_RowClassName="JoinTableRow" msprop:Generator_UserTableName="JoinTable" msprop:Generator_RowEvArgName="JoinTableRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Наименование" msprop:Generator_ColumnVarNameInTable="columnНаименование" msprop:Generator_ColumnPropNameInRow="Наименование" msprop:Generator_ColumnPropNameInTable="НаименованиеColumn" msprop:Generator_UserColumnName="Наименование" minOccurs="0">
@@ -853,8 +853,8 @@ FROM            ([Аренда_адресов] INNER JOIN
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="РегистраторыАренда_адресов" msdata:parent="Регистраторы" msdata:child="Аренда_адресов" msdata:parentkey="Наименование" msdata:childkey="Регистратор" msprop:Generator_UserChildTable="Аренда_адресов" msprop:Generator_ChildPropName="GetАренда_адресовRows" msprop:Generator_UserRelationName="РегистраторыАренда_адресов" msprop:Generator_RelationVarName="relationРегистраторыАренда_адресов" msprop:Generator_UserParentTable="Регистраторы" msprop:Generator_ParentPropName="РегистраторыRow" />
-      <msdata:Relationship name="РегистраторыАренда_адресов1" msdata:parent="Регистраторы" msdata:child="JoinTable" msdata:parentkey="Наименование" msdata:childkey="Регистратор" msprop:Generator_UserChildTable="JoinTable" msprop:Generator_ChildPropName="GetJoinTableRows" msprop:Generator_UserRelationName="РегистраторыАренда_адресов1" msprop:Generator_ParentPropName="РегистраторыRow" msprop:Generator_RelationVarName="relationРегистраторыАренда_адресов1" msprop:Generator_UserParentTable="Регистраторы" />
+      <msdata:Relationship name="РегистраторыАренда_адресов" msdata:parent="Регистраторы" msdata:child="Аренда_адресов" msdata:parentkey="Наименование" msdata:childkey="Регистратор" msprop:Generator_UserChildTable="Аренда_адресов" msprop:Generator_ChildPropName="GetАренда_адресовRows" msprop:Generator_UserRelationName="РегистраторыАренда_адресов" msprop:Generator_ParentPropName="РегистраторыRow" msprop:Generator_RelationVarName="relationРегистраторыАренда_адресов" msprop:Generator_UserParentTable="Регистраторы" />
+      <msdata:Relationship name="РегистраторыАренда_адресов1" msdata:parent="Регистраторы" msdata:child="JoinTable" msdata:parentkey="Наименование" msdata:childkey="Регистратор" msprop:Generator_UserChildTable="JoinTable" msprop:Generator_ChildPropName="GetJoinTableRows" msprop:Generator_UserRelationName="РегистраторыАренда_адресов1" msprop:Generator_RelationVarName="relationРегистраторыАренда_адресов1" msprop:Generator_UserParentTable="Регистраторы" msprop:Generator_ParentPropName="РегистраторыRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

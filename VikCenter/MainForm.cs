@@ -151,7 +151,7 @@ namespace VikCenter
         {
             try
             {
-                dataSet.EndInit();
+               // dataSet.EndInit();
                 regAdapter.Update(dataSet.Регистраторы);
             }
             catch (DBConcurrencyException)
