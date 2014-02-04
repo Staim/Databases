@@ -65,5 +65,16 @@ namespace VikCenter.Properties {
                 return ((string)(this["db1ConnectionString3"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("server=localhost;user id=root;password=polta1712;persistsecurityinfo=True;databas" +
+            "e=database")]
+        public string databaseConnectionString {
+            get {
+                return ((string)(this["databaseConnectionString"]));
+            }
+        }
     }
 }

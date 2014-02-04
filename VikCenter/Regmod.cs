@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 //using System.Drawing;
-using VikCenter.db1DataSetTableAdapters;
+using VikCenter.DataSet1TableAdapters;
 
 namespace VikCenter
 {
@@ -27,9 +27,9 @@ namespace VikCenter
             //get data
             main = this.MdiParent as MainForm;
 
-            bindingSource1 = new BindingSource(main.global.dataSet, "Регистраторы");
+            bindingSource1 = new BindingSource(main.global.dataSet, "registrators");
 
-            bindingSource3 = new BindingSource(bindingSource1, "РегистраторыАренда_адресов");
+            bindingSource3 = new BindingSource(bindingSource1, "registrators_contracts");
 
             dataGridView1.DataSource = bindingSource1;
             dataGridView3.DataSource = bindingSource3;
@@ -41,18 +41,25 @@ namespace VikCenter
             dataGridView3.AutoResizeColumns();
 
             SetUpDataGrid(main);
+            dataGridView3.AllowUserToAddRows = false;
+            dataGridView3.Columns["id"].Visible = false;
+            dataGridView3.ColumnHeadersDefaultCellStyle.Font = new Font(new FontFamily("Arial"), 10, FontStyle.Bold);
 
-            dataGridView3.Columns["Id"].Visible = false;
-            dataGridView3.ColumnHeadersDefaultCellStyle.Font = new Font(new FontFamily("Arial"), 12, FontStyle.Bold);
-
-            dataGridView3.Columns["Сумма"].DefaultCellStyle.Format = "C";
-            dataGridView3.Columns["Создание_строки"].Visible = false;
-            dataGridView3.Columns["Редактирование_строки"].Visible = false;
-            dataGridView3.Columns["Создание_логин"].Visible = false;
-            dataGridView3.Columns["Редактирование_логин"].Visible = false;
-            dataGridView3.Columns["Статус_строки"].Visible = false;
-            dataGridView3.Columns["Процент"].Visible = false;
-            dataGridView3.Columns["Наименование"].HeaderText = "Организация";
+            dataGridView3.Columns["sum"].DefaultCellStyle.Format = "C";
+            dataGridView3.Columns["create_time"].Visible = false;
+            dataGridView3.Columns["edit_time"].Visible = false;
+            dataGridView3.Columns["create_login"].Visible = false;
+            dataGridView3.Columns["edit_login"].Visible = false;
+            dataGridView3.Columns["status"].Visible = false;
+            //dataGridView3.Columns["man1_proc"].Visible = false;
+            dataGridView3.Columns["comment"].Visible = false;
+            dataGridView3.Columns["name"].HeaderText = "Организация";
+            dataGridView3.Columns["contr_number"].HeaderText = "№ Договора";
+            dataGridView3.Columns["sum"].HeaderText = "Сумма";
+            dataGridView3.Columns["registrator"].Visible = false;
+            dataGridView3.Columns["contr_number"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView3.Columns["sum"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView3.Columns["pay_date"].Width = 100;
             DataGridViewComboBoxColumn combo2 = new DataGridViewComboBoxColumn();
             combo2.Items.AddRange("105066, ул. Спартаковская",
                 "129110, Банный пер.", "123557, Большой Тишинский пер.",
@@ -70,7 +77,7 @@ namespace VikCenter
                 "121087, ул. Новозаводская",
                 "121596, ул. Толбухина",
                 "119311, ул. Крупской");
-            combo2.DataPropertyName = "Адрес";
+            combo2.DataPropertyName = "adress";
             combo2.HeaderText = "Адрес";
            //combo2.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView3.Columns.RemoveAt(3);
@@ -78,17 +85,18 @@ namespace VikCenter
             DataGridViewComboBoxColumn convension = new DataGridViewComboBoxColumn();
             convension.Items.AddRange("С платежом", "Без платежа");
             convension.HeaderText = "Вид договора";
-            convension.DataPropertyName = "Вид_договора";
+            convension.DataPropertyName = "type";
             dataGridView3.Columns.RemoveAt(2);
             dataGridView3.Columns.Insert(2, convension);
             SetUpDataGrid_new(main);
             DataGridViewCalendarColumn payDate = new DataGridViewCalendarColumn();
-            payDate.DataPropertyName = "Дата_платежа";
+            payDate.DataPropertyName = "pay_date";
             payDate.HeaderText = "Дата платежа";
             dataGridView3.Columns.RemoveAt(7);
             dataGridView3.Columns.Insert(7, payDate);
             dataGridView3.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridView3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            
         }
 
         private void SetUpDataGrid_new(MainForm main)
@@ -125,33 +133,41 @@ namespace VikCenter
 
         private void SetUpDataGrid(MainForm main)
         {
-            dataGridView1.Columns["Id"].Visible = false;
-            dataGridView1.Columns["Создание_строки"].Visible = false;
-            dataGridView1.Columns["Редактирование_строки"].Visible = false;
-            dataGridView1.Columns["Создание_логин"].Visible = false;
-            dataGridView1.Columns["Редактирование_логин"].Visible = false;
-            dataGridView1.Columns["Статус_строки"].Visible = false;
-            dataGridView1.Columns["Наименование"].HeaderText = "Регистратор";
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.Columns["id"].Visible = false;
+            dataGridView1.Columns["create_login"].Visible = false;
+            dataGridView1.Columns["create_time"].Visible = false;
+            dataGridView1.Columns["edit_login"].Visible = false;
+            dataGridView1.Columns["edit_time"].Visible = false;
+            dataGridView1.Columns["status"].Visible = false;
+            dataGridView1.Columns["comment"].Visible = false;
 
-            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font(new FontFamily("Arial"), 12, FontStyle.Bold);
+            dataGridView1.Columns["name"].HeaderText = "Регистратор";
+
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font(new FontFamily("Arial"), 10, FontStyle.Bold);
             dataGridView1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridView1.Columns["Конт_лица"].HeaderText = "Контактные лица";
-            dataGridView1.Columns["Наименование"].HeaderText = "Регистратор";
+            dataGridView1.Columns["contacts"].HeaderText = "Контактные лица";
+            dataGridView1.Columns["name"].HeaderText = "Регистратор";
+            dataGridView1.Columns["phone"].HeaderText = "Телефон";
+            dataGridView1.Columns["email"].HeaderText = "E-mail";
+            dataGridView1.Columns["adress"].HeaderText = "Адресс";
+            dataGridView1.Columns["site"].HeaderText = "Сайт";
+            dataGridView1.Columns["terms"].HeaderText = "Условия работы";
 
             DataGridViewComboBoxColumn metroComboBox = new DataGridViewComboBoxColumn();
-            metroComboBox.DataPropertyName = "Метро";
+            metroComboBox.DataPropertyName = "metro";
             metroComboBox.HeaderText = "Метро";
-            metroComboBox.DataSource = main.global.dataSet.Станции_метро;
-            metroComboBox.ValueMember = "Id";
-            metroComboBox.DisplayMember = "Станция";
+            metroComboBox.DataSource = main.global.dataSet.stations;
+            metroComboBox.ValueMember = "id";
+            metroComboBox.DisplayMember = "name";
             dataGridView1.Columns.RemoveAt(5);
             dataGridView1.Columns.Insert(5, metroComboBox);
-
+            
             DataGridViewComboBoxColumn manager1 = new DataGridViewComboBoxColumn();
             //manager1.DisplayStyle = DataGridViewComboBoxDisplayStyle.ComboBox;
             manager1.Items.AddRange("Алиева Е.И","Баркевич В.В.","Белова Ю.А.","Денисова Н.С.","Завгородная Е.В.","Мишин.В.И.","Пашина А.Е.","Самарская Ю.А.","Соколова Ю.В.","Черняева М.Н.");
-            manager1.DataPropertyName = "Менеджер_хол_звонок";
+            manager1.DataPropertyName = "man1";
             manager1.HeaderText = "Менеджер \n(холодный звонок)";
             dataGridView1.Columns.RemoveAt(9);
             dataGridView1.Columns.Insert(9, manager1);
@@ -159,7 +175,7 @@ namespace VikCenter
             DataGridViewComboBoxColumn manager2 = new DataGridViewComboBoxColumn();
             //manager1.DisplayStyle = DataGridViewComboBoxDisplayStyle.ComboBox;
             manager2.Items.AddRange("Алиева Е.И", "Баркевич В.В.", "Белова Ю.А.", "Денисова Н.С.", "Завгородная Е.В.", "Мишин.В.И.", "Пашина А.Е.", "Самарская Ю.А.", "Соколова Ю.В.", "Черняева М.Н.");
-            manager2.DataPropertyName = "Менеджер_встреча";
+            manager2.DataPropertyName = "man2";
             manager2.HeaderText = "Менеджер \n(встреча)";
             dataGridView1.Columns.RemoveAt(10);
             dataGridView1.Columns.Insert(10, manager2);
@@ -210,21 +226,21 @@ namespace VikCenter
         private void setFilter()
         {
             if (toolStripComboBox1.Text == "Все" && toolStripComboBox2.Text == "Все")
-                bindingSource1.Filter = "[Наименование] LIKE '" + toolStripTextBox1.Text + "%'" +
-                    "and [Менеджер_хол_звонок] LIKE '%'" +
-                    "and [Менеджер_встреча] LIKE '%'";
+                bindingSource1.Filter = "[name] LIKE '" + toolStripTextBox1.Text + "%'" +
+                    "and [man1] LIKE '%'" +
+                    "and [man2] LIKE '%'";
             else if (toolStripComboBox1.Text == "Все")
-                bindingSource1.Filter = "[Наименование] LIKE '" + toolStripTextBox1.Text + "%'" +
-                "and [Менеджер_хол_звонок] LIKE '%'" +
-                "and [Менеджер_встреча] LIKE '" + toolStripComboBox2.Text + "%'";
+                bindingSource1.Filter = "[name] LIKE '" + toolStripTextBox1.Text + "%'" +
+                "and [man1] LIKE '%'" +
+                "and [man2] LIKE '" + toolStripComboBox2.Text + "%'";
             else if (toolStripComboBox2.Text == "Все")
-                bindingSource1.Filter = "[Наименование] LIKE '" + toolStripTextBox1.Text + "%'" +
-                "and [Менеджер_хол_звонок] LIKE '" + toolStripComboBox1.Text + "%'" +
-                "and [Менеджер_встреча] LIKE '%'";
+                bindingSource1.Filter = "[name] LIKE '" + toolStripTextBox1.Text + "%'" +
+                "and [man1] LIKE '" + toolStripComboBox1.Text + "%'" +
+                "and [man2] LIKE '%'";
             else
-                bindingSource1.Filter = "[Наименование] LIKE '" + toolStripTextBox1.Text + "%'" +
-                "and [Менеджер_хол_звонок] LIKE '" + toolStripComboBox1.Text + "%'" +
-                "and [Менеджер_встреча] LIKE '" + toolStripComboBox2.Text + "%'";
+                bindingSource1.Filter = "[name] LIKE '" + toolStripTextBox1.Text + "%'" +
+                "and [man1] LIKE '" + toolStripComboBox1.Text + "%'" +
+                "and [man2] LIKE '" + toolStripComboBox2.Text + "%'";
 
         }
 
@@ -242,8 +258,8 @@ namespace VikCenter
 
         private void setFilterBottom()
         {
-            bindingSource3.Filter = "[Наименование] LIKE '" + toolStripTextBox2.Text + "%'" +
-                "and [№Договора] LIKE '" + toolStripTextBox3.Text + "%'";
+            bindingSource3.Filter = "[name] LIKE '" + toolStripTextBox2.Text + "%'" +
+                "and [contr_number] LIKE '" + toolStripTextBox3.Text + "%'";
         }
 
         private void toolStripButton4_Click(object sender, EventArgs e)
@@ -270,38 +286,28 @@ namespace VikCenter
         //удалить верхнего грида
         private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
         {
-            //int i = bindingSource1.Position;
-            //dataGridView1.CurrentRow.Cells["
-            //MainForm main = this.MdiParent as MainForm;
-            //main.global.dataSet.Регистраторы.GetChanges();
+            //не используется
 
         }
 
         private void toolStripButton9_Click(object sender, EventArgs e)
-        {
-
-            //ЛогиныTableAdapter adapter = new ЛогиныTableAdapter();
-           // MainForm data = this.MdiParent as MainForm;
-            //adapter.UpdateRow("root", "test","C",1);
-           
-            
+        {        
             int rowIndex =  dataGridView1.CurrentCell.RowIndex;
-            int currntValue = byte.Parse(dataGridView1.Rows[rowIndex].Cells["Статус_строки"].Value.ToString());
-            
-            РегистраторыTableAdapter adapter = new РегистраторыTableAdapter();
+            int currntValue = byte.Parse(dataGridView1.Rows[rowIndex].Cells["status"].Value.ToString());
+
+            registratorsTableAdapter adapter = new registratorsTableAdapter();
             if  (currntValue == 0)
             {
                 DialogResult result = MessageBox.Show("Удаление", "Пометить запись на удаление?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == System.Windows.Forms.DialogResult.Yes) 
                 {
-
-                    int curvalue = (int)(dataGridView1.Rows[rowIndex].Cells["Id"].Value);
+                    int curvalue = (int)(dataGridView1.Rows[rowIndex].Cells["id"].Value);
                     //dataGridView1.Rows[rowIndex].Cells["Статус_строки"].Value = 1;
-                    adapter.DelById(1, curvalue);
+                    adapter.DelByID(1, curvalue);
                     MainForm main = this.MdiParent as MainForm;
                     main.global.renewRegsTable();
                     //new code
-                    adapter.Fill(main.global.dataSet.Регистраторы);
+                    adapter.Fill(main.global.dataSet.registrators);
                     dataGridView1.CurrentRow.DefaultCellStyle.BackColor = Color.Gray;
                     dataGridView1.CurrentRow.ReadOnly = true;
                 }
@@ -313,11 +319,11 @@ namespace VikCenter
                 if (result == System.Windows.Forms.DialogResult.Yes)
                 {
 
-                    int curvalue = (int)(dataGridView1.Rows[rowIndex].Cells["Id"].Value);
+                    int curvalue = (int)(dataGridView1.Rows[rowIndex].Cells["id"].Value);
                     //dataGridView1.Rows[rowIndex].Cells["Статус_строки"].Value = 0;
-                    adapter.DelById(0, curvalue);
+                    adapter.DelByID(0, curvalue);
                     main.global.renewRegsTable();
-                    adapter.Fill(main.global.dataSet.Регистраторы);
+                    adapter.Fill(main.global.dataSet.registrators);
                     dataGridView1.CurrentRow.DefaultCellStyle.BackColor = Color.White;
                     dataGridView1.CurrentRow.ReadOnly = false;
                 }
@@ -364,7 +370,7 @@ namespace VikCenter
             int currntValue = byte.Parse(dataGridView3.Rows[rowIndex].Cells["Статус_строки"].Value.ToString());
 
             //РегистраторыTableAdapter adapter = new РегистраторыTableAdapter();
-            Аренда_адресовTableAdapter adapter = new Аренда_адресовTableAdapter();
+            contractsTableAdapter adapter = new contractsTableAdapter();
             if (currntValue == 0)
             {
                 DialogResult result = MessageBox.Show("Удаление", "Пометить запись на удаление?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -373,10 +379,10 @@ namespace VikCenter
 
                     int curvalue = (int)(dataGridView3.Rows[rowIndex].Cells["Id"].Value);
                     dataGridView3.Rows[rowIndex].Cells["Статус_строки"].Value = 1;
-                    adapter.DelById(1, curvalue);
+                    adapter.DelByID(1, curvalue);
                     MainForm main = this.MdiParent as MainForm;
                     main.global.renewArendaTable();
-                    adapter.Fill(main.global.dataSet.Аренда_адресов);
+                    adapter.Fill(main.global.dataSet.contracts);
                     dataGridView3.CurrentRow.DefaultCellStyle.BackColor = Color.Gray;
                     dataGridView3.CurrentRow.ReadOnly = true;
                 }
@@ -388,11 +394,11 @@ namespace VikCenter
                 if (result == System.Windows.Forms.DialogResult.Yes)
                 {
 
-                    int curvalue = (int)(dataGridView3.Rows[rowIndex].Cells["Id"].Value);
-                    dataGridView3.Rows[rowIndex].Cells["Статус_строки"].Value = 0;
-                    adapter.DelById(0, curvalue);
+                    int curvalue = (int)(dataGridView3.Rows[rowIndex].Cells["id"].Value);
+                    dataGridView3.Rows[rowIndex].Cells["status"].Value = 0;
+                    adapter.DelByID(0, curvalue);
                     main.global.renewArendaTable();
-                    adapter.Fill(main.global.dataSet.Аренда_адресов);
+                    adapter.Fill(main.global.dataSet.contracts);
                     dataGridView3.CurrentRow.DefaultCellStyle.BackColor = Color.White;
                     dataGridView3.CurrentRow.ReadOnly = false;
                 }
@@ -404,7 +410,7 @@ namespace VikCenter
             int status = 0;
             try
             {
-                status = int.Parse(dataGridView1.Rows[e.RowIndex].Cells["Статус_строки"].Value.ToString());
+                status = int.Parse(dataGridView1.Rows[e.RowIndex].Cells["status"].Value.ToString());
             }
             catch (Exception)
             {
@@ -428,7 +434,7 @@ namespace VikCenter
             int status = 0;
             try
             {
-                status = int.Parse(dataGridView3.Rows[e.RowIndex].Cells["Статус_строки"].Value.ToString());
+                status = int.Parse(dataGridView3.Rows[e.RowIndex].Cells["status"].Value.ToString());
             }
             catch (Exception)
             {
@@ -463,12 +469,54 @@ namespace VikCenter
 
         private void информацияОИзмененииToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string s = dataGridView1.CurrentRow.Cells["Создание_строки"].Value.ToString();
-            string s2 = dataGridView1.CurrentRow.Cells["Создание_логин"].Value.ToString();
-            string s3 = dataGridView1.CurrentRow.Cells["Редактирование_строки"].Value.ToString();
-            string s4 = dataGridView1.CurrentRow.Cells["Редактирование_логин"].Value.ToString();
+            string s = dataGridView1.CurrentRow.Cells["create_time"].Value.ToString();
+            string s2 = dataGridView1.CurrentRow.Cells["create_login"].Value.ToString();
+            string s3 = dataGridView1.CurrentRow.Cells["edit_time"].Value.ToString();
+            string s4 = dataGridView1.CurrentRow.Cells["edit_login"].Value.ToString();
             RowInfoForm info = new RowInfoForm(s,s2,s3,s4);
             info.ShowDialog();
+        }
+
+        private void dataGridView1_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+
+        }
+
+        //кнопка обновление верхняя
+        private void toolStripButton11_Click(object sender, EventArgs e)
+        {
+
+            main.global.regAdapter.Fill(main.global.dataSet.registrators);
+
+        }
+
+        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellStateChanged(object sender, DataGridViewCellStateChangedEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellParsing(object sender, DataGridViewCellParsingEventArgs e)
+        {
+            //MessageBox.Show("test");
+            dataGridView1.Rows[e.RowIndex].Cells["edit_login"].Value = main.global.LoginInfo.Login;
+            dataGridView1.Rows[e.RowIndex].Cells["edit_time"].Value = DateTime.Now;
+        }
+
+        //кнопка обновление нижняя
+        private void toolStripButton12_Click(object sender, EventArgs e)
+        {
+            main.global.regAdapter.Fill(main.global.dataSet.registrators);
+        }
+
+        private void dataGridView1_UserAddedRow(object sender, DataGridViewRowEventArgs e)
+        {
+            e.Row.Cells["create_login"].Value = main.global.LoginInfo.Login;
+            e.Row.Cells["create_time"].Value = DateTime.Now;
         }
 
     }

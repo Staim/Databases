@@ -75,23 +75,26 @@ namespace VikCenter
         private void enterButton_Click(object sender, EventArgs e)
         {
             //можно добавить транзакцию
-            db1DataSetTableAdapters.ЛогиныTableAdapter loginTableAdapter = new db1DataSetTableAdapters.ЛогиныTableAdapter();
-            using (db1DataSet.ЛогиныDataTable loginsDataTable = new db1DataSet.ЛогиныDataTable())
+            //db1DataSetTableAdapters.ЛогиныTableAdapter loginTableAdapter = new db1DataSetTableAdapters.ЛогиныTableAdapter();
+            DataSet1TableAdapters.loginsTableAdapter loginTableAdapter = new DataSet1TableAdapters.loginsTableAdapter();
+
+            using (/*db1DataSet.ЛогиныDataTable loginsDataTable = new db1DataSet.ЛогиныDataTable()*/
+                DataSet1.loginsDataTable loginsDataTable = new DataSet1.loginsDataTable())
             {
                 loginTableAdapter.Fill(loginsDataTable);
 
                 for (int i = 0; i < loginsDataTable.Rows.Count; i++)
                 {
                     DataRow row = loginsDataTable.Rows[i];
-                    string login = (string) row["Логин"];
-                    string pass = (string) row["Пароль"];
+                    string login = (string) row["login"];
+                    string pass = (string) row["password"];
                         if (login == loginTextBox.Text && pass == passwordTextBox.Text)
                         {
                             //_loginIfo = "Вы зашли под именем: " + login + ". Время подключения: " + DateTime.Now.ToShortTimeString();
                             verify = true;
                             loginInfo.Login = login;
                             loginInfo.Password = pass;
-                            loginInfo.Role = row["Правило"].ToString()[0];
+                            loginInfo.Role = row["role"].ToString()[0];
                             if (saveCheckBox.Checked)
                             // ceриализуем
                             {
@@ -122,8 +125,6 @@ namespace VikCenter
                 }
 
             }
-
-            loginTableAdapter.Dispose();
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
@@ -147,22 +148,24 @@ namespace VikCenter
 
         private void changePassButton_Click(object sender, EventArgs e)
         {
+
             //можно добавить транзакцию
-            db1DataSetTableAdapters.ЛогиныTableAdapter loginTableAdapter = new db1DataSetTableAdapters.ЛогиныTableAdapter();
-            using (db1DataSet.ЛогиныDataTable loginsDataTable = new db1DataSet.ЛогиныDataTable())
+            //db1DataSetTableAdapters.ЛогиныTableAdapter loginTableAdapter = new db1DataSetTableAdapters.ЛогиныTableAdapter();
+            DataSet1TableAdapters.loginsTableAdapter loginTableAdapter = new DataSet1TableAdapters.loginsTableAdapter();
+            using (DataSet1.loginsDataTable loginsDataTable = new DataSet1.loginsDataTable())
             {
                 loginTableAdapter.Fill(loginsDataTable);
 
                 for (int i = 0; i < loginsDataTable.Rows.Count; i++)
                 {
                     DataRow row = loginsDataTable.Rows[i];
-                    string login = (string)row["Логин"];
-                    string pass = (string)row["Пароль"];
+                    string login = (string)row["login"];
+                    string pass = (string)row["password"];
                     if (login == changeLoginTextBox.Text && pass == changePassTextBox.Text)
                     {
                         verify_change = true;
                         verify = true;
-                        loginsDataTable.Rows[i]["Пароль"] = repeatePassTextBox.Text;
+                        loginsDataTable.Rows[i]["password"] = repeatePassTextBox.Text;
                         loginTableAdapter.Update(loginsDataTable);
                         this.Text = "Cоединение с БД";
                         panel2.Visible = false;
@@ -171,8 +174,6 @@ namespace VikCenter
                 }
                 if (!verify_change) MessageBox.Show("Введен неверный логин или пароль. Повторите снова", "Ошибка при вводе", MessageBoxButtons.OK); else this.Close();
             }
-
-            loginTableAdapter.Dispose();
         }
 
         private void cancelChangeButton_Click(object sender, EventArgs e)

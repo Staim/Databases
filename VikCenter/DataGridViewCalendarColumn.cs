@@ -57,8 +57,20 @@ namespace System.Windows.Forms
                 }
                 else
                 {
+                    try
+                    {
+                        ctl.Value = (DateTime)this.Value;
+                    }
+                    catch (System.NullReferenceException)
+                    {
 
-                    ctl.Value = (DateTime)this.Value;
+                        ctl.Value = (DateTime)this.DefaultNewRowValue;
+                    }
+                    catch (System.InvalidCastException)
+                    {
+                        ctl.Value = (DateTime)this.DefaultNewRowValue;
+                    }
+                    
                 }
             }
 

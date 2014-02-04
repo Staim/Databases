@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VikCenter", "VikCenter\VikCenter.csproj", "{F4D0A975-4DF8-4333-B834-3C348A3E269F}"
 EndProject
-Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "ModelingProject1", "ModelingProject1\ModelingProject1.modelproj", "{E855E38E-F906-4EC3-A492-7CD5EEFE53E3}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,16 +24,6 @@ Global
 		{F4D0A975-4DF8-4333-B834-3C348A3E269F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{F4D0A975-4DF8-4333-B834-3C348A3E269F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{F4D0A975-4DF8-4333-B834-3C348A3E269F}.Release|x86.ActiveCfg = Release|Any CPU
-		{E855E38E-F906-4EC3-A492-7CD5EEFE53E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E855E38E-F906-4EC3-A492-7CD5EEFE53E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E855E38E-F906-4EC3-A492-7CD5EEFE53E3}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{E855E38E-F906-4EC3-A492-7CD5EEFE53E3}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{E855E38E-F906-4EC3-A492-7CD5EEFE53E3}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{E855E38E-F906-4EC3-A492-7CD5EEFE53E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E855E38E-F906-4EC3-A492-7CD5EEFE53E3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E855E38E-F906-4EC3-A492-7CD5EEFE53E3}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{E855E38E-F906-4EC3-A492-7CD5EEFE53E3}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{E855E38E-F906-4EC3-A492-7CD5EEFE53E3}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data;
+using MySql.Data.MySqlClient;
 
 namespace VikCenter
 {
@@ -33,13 +35,7 @@ namespace VikCenter
 
         private void регистраторыToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if((global.Windows & Global.WindowsOpen.Registrators) != Global.WindowsOpen.Registrators )
-            {
-                RegistratorsForm regForm = new RegistratorsForm();
-                regForm.MdiParent = this;
-                regForm.Show();
-                global.Windows = global.Windows | Global.WindowsOpen.Registrators;
-            }
+            //удалить в дизайнере
         }
 
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
@@ -64,18 +60,18 @@ namespace VikCenter
 
         private void своднаяТаблицаToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            arenda arendaForm = new arenda();
+          /*  arenda arendaForm = new arenda();
             arendaForm.MdiParent = this;
             arendaForm.setDataGrid("", true);
-            arendaForm.Show();
+            arendaForm.Show();*/
         }
 
         private void арендаАдресовToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            arenda arendaForm = new arenda();
+           /* arenda arendaForm = new arenda();
             arendaForm.MdiParent = this;
             arendaForm.setDataGrid("", false);
-            arendaForm.Show();
+            arendaForm.Show();*/
         }
 
         private void регистраторыСДоговорамиToolStripMenuItem_Click(object sender, EventArgs e)
@@ -111,12 +107,12 @@ namespace VikCenter
     public class Global
     {
 
-        private LoginInfo loginInfo;
-        public db1DataSet dataSet;
+        public LoginInfo loginInfo;
+        public DataSet1 dataSet;
         public WindowsOpen Windows;
-        public db1DataSetTableAdapters.РегистраторыTableAdapter regAdapter = new db1DataSetTableAdapters.РегистраторыTableAdapter();
-        public db1DataSetTableAdapters.Аренда_адресовTableAdapter arendaAdapter = new db1DataSetTableAdapters.Аренда_адресовTableAdapter();
-        public db1DataSetTableAdapters.Станции_метроTableAdapter stationAdapter = new db1DataSetTableAdapters.Станции_метроTableAdapter();
+        public DataSet1TableAdapters.registratorsTableAdapter regAdapter = new DataSet1TableAdapters.registratorsTableAdapter();
+        public DataSet1TableAdapters.contractsTableAdapter arendaAdapter = new DataSet1TableAdapters.contractsTableAdapter();
+        public DataSet1TableAdapters.stationsTableAdapter stationAdapter = new DataSet1TableAdapters.stationsTableAdapter();
 
 
         [Flags]
@@ -132,10 +128,10 @@ namespace VikCenter
 
         public Global()
         {
-            dataSet = new db1DataSet();
-            regAdapter.Fill(dataSet.Регистраторы);
-            arendaAdapter.Fill(dataSet.Аренда_адресов);
-            stationAdapter.Fill(dataSet.Станции_метро);
+            dataSet = new DataSet1();
+            regAdapter.Fill(dataSet.registrators);
+            arendaAdapter.Fill(dataSet.contracts);
+            stationAdapter.Fill(dataSet.stations);
             Windows = WindowsOpen.None;
         }
 
@@ -149,31 +145,15 @@ namespace VikCenter
 
         internal void renewRegsTable()
         {
-            try
-            {
-               // dataSet.EndInit();
-                regAdapter.Update(dataSet.Регистраторы);
-            }
-            catch (DBConcurrencyException)
-            {
-                
-                
-            }
+
+                regAdapter.Update(dataSet.registrators);
 
         }
 
         internal void renewArendaTable()
         {
-            try
-            {
-                arendaAdapter.Update(dataSet.Аренда_адресов);
-            }
-            catch (DBConcurrencyException)
-            {
-                
-                
-            }
-            
+
+                arendaAdapter.Update(dataSet.contracts);    
         }
     }
 }

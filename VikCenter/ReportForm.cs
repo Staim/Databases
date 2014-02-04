@@ -7,13 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data;
+using MySql.Data.MySqlClient;
 
 namespace VikCenter
 {
     public partial class Report : Form
     {
         MainForm all;
-        db1DataSetTableAdapters.JoinTableTableAdapter joinAdapter = new db1DataSetTableAdapters.JoinTableTableAdapter();
+        DataSet1TableAdapters.JoinTableAdapter joinAdapter = new DataSet1TableAdapters.JoinTableAdapter();
 
         public Report()
         {
@@ -84,50 +86,35 @@ namespace VikCenter
             }
 
 
-            bindingSource1.Filter = "[Дата_платежа] >= '" + date + "'AND [Дата_платежа] <= '" + date2 + "'" +
-                "AND [Регистратор] LIKE '%" + registrator + "%'" +
-                "AND [Менеджер_хол_звонок] LIKE '%" + men1 + "%'" +
-                "AND [Менеджер_встреча] LIKE '%" + men2 + "%'";
-
-            /*if(dateTimePicker1.Enabled)
-            {
-                bindingSource1.Filter = "[Дата_платежа] >= '" + dateTimePicker1.Value.ToShortDateString() + "'AND [Дата_платежа] <= '" + dateTimePicker2.Value.ToShortDateString() + "'";
-                    
-            }
-            if (textBox1.Enabled)
-            {
-                bindingSource1.Filter = "[Регистратор] LIKE '%" + textBox1.Text + "%'";
-            }
-            if (dateTimePicker1.Enabled && textBox1.Enabled)
-                bindingSource1.Filter = "[Дата_платежа] >= '" + dateTimePicker1.Value.ToShortDateString() + "'AND [Дата_платежа] <= '" + dateTimePicker2.Value.ToShortDateString() + "'" +
-                    "AND [Регистратор] LIKE '%" + textBox1.Text + "%'";
-            if (comboBox1.Enabled)
-            {
-                bindingSource1.Filter = "[Менеджер_хол_звонок] LIKE '%" + comboBox1.Text + "%'";
-            }
-            if (comboBox2.Enabled)
-            {
-                bindingSource1.Filter = "[Менеджер_встреча] LIKE '%" + comboBox2.Text + "%'";
-            }
-            
-            */
+            bindingSource1.Filter = "[pay_date] >= '" + date + "'AND [pay_date] <= '" + date2 + "'" +
+                "AND [registrator] LIKE '%" + registrator + "%'" +
+                "AND [man1] LIKE '%" + men1 + "%'" +
+                "AND [man2] LIKE '%" + men2 + "%'";
 
         }
 
         private void SetUpDataGrid2()
         {
-            datagridview1.Columns["Наименование"].HeaderText = "Организация";
-            datagridview1.Columns["Дата_платежа"].HeaderText = "Дата платежа";
-            datagridview1.Columns["Менеджер_хол_звонок"].HeaderText = "Холодный звонок";
-            datagridview1.Columns["Менеджер_встреча"].HeaderText = "Встреча";
-            datagridview1.Columns["%Мен_встреча"].HeaderText = "% мен. встреча";
+            datagridview1.Columns["name"].HeaderText = "Организация";
+            datagridview1.Columns["sum"].HeaderText = "Сумма";
+            datagridview1.Columns["sum"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            datagridview1.Columns["contr_number"].HeaderText = "№ Договора";
+            datagridview1.Columns["contr_number"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            datagridview1.Columns["registrator"].HeaderText = "Регистратор";
+
+            datagridview1.Columns["pay_date"].HeaderText = "Дата платежа";
+            datagridview1.Columns["pay_date"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            datagridview1.Columns["man1"].HeaderText = "Холодный звонок";
+            datagridview1.Columns["man2"].HeaderText = "Встреча";
+            datagridview1.Columns["man2_proc"].HeaderText = "% мен. встреча";
+            datagridview1.Columns["man2_proc"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             datagridview1.ColumnHeadersDefaultCellStyle.Font = new Font(new FontFamily("Arial"), 10, FontStyle.Bold);
             datagridview1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             datagridview1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             datagridview1.ReadOnly = true;
-            datagridview1.Columns["Сумма"].DefaultCellStyle.Format = "C";
-            datagridview1.Columns["%Мен_встреча"].DefaultCellStyle.Format = "C";
-            datagridview1.Columns["Сумма"].DisplayIndex = 6;
+            datagridview1.Columns["sum"].DefaultCellStyle.Format = "C";
+            datagridview1.Columns["man2_proc"].DefaultCellStyle.Format = "C";
+            datagridview1.Columns["sum"].DisplayIndex = 6;
         }
 
         private void checkBox1_Click(object sender, EventArgs e)
@@ -139,8 +126,8 @@ namespace VikCenter
             }
             else
             {
-                dateTimePicker1.Enabled = true;
-                dateTimePicker2.Enabled = true;
+                dateTimePicker1.Enabled = false;
+                dateTimePicker2.Enabled = false;
             }
         }
 

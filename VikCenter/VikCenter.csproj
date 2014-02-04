@@ -48,6 +48,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web.Services" />
@@ -61,14 +62,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="arenda.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="arenda.Designer.cs">
-      <DependentUpon>arenda.cs</DependentUpon>
-    </Compile>
     <Compile Include="DataGridViewCalendarColumn.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DataSet1.cs">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
     <Compile Include="db1DataSet.cs">
       <DependentUpon>db1DataSet.xsd</DependentUpon>
@@ -97,12 +101,6 @@
     <Compile Include="ReportForm.Designer.cs">
       <DependentUpon>ReportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Registrators.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Registrators.Designer.cs">
-      <DependentUpon>Registrators.cs</DependentUpon>
-    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,9 +121,6 @@
     <Compile Include="Regmod.Designer.cs">
       <DependentUpon>Regmod.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="arenda.resx">
-      <DependentUpon>arenda.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -151,12 +146,20 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Registrators.resx">
-      <DependentUpon>Registrators.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Regmod.resx">
       <DependentUpon>Regmod.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
     <None Include="db1DataSet.xsc">
       <DependentUpon>db1DataSet.xsd</DependentUpon>
     </None>
@@ -242,6 +245,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\del.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\update.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
