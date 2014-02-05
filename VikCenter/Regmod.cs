@@ -37,9 +37,10 @@ namespace VikCenter
             bindingNavigator1.BindingSource = bindingSource1;
             bindingNavigator2.BindingSource = bindingSource3;
 
-            dataGridView1.AutoResizeColumns();
-            dataGridView3.AutoResizeColumns();
-
+           // dataGridView1.AutoResizeColumns();
+           // dataGridView3.AutoResizeColumns();
+           // dataGridView1.EditMode = DataGridViewEditMode.EditOnEnter;
+           // dataGridView3.EditMode = DataGridViewEditMode.EditOnEnter;
             SetUpDataGrid(main);
             dataGridView3.AllowUserToAddRows = false;
             dataGridView3.Columns["id"].Visible = false;
@@ -83,7 +84,7 @@ namespace VikCenter
             dataGridView3.Columns.RemoveAt(3);
             dataGridView3.Columns.Insert(3, combo2);
             DataGridViewComboBoxColumn convension = new DataGridViewComboBoxColumn();
-            convension.Items.AddRange("С платежом", "Без платежа");
+            convension.Items.AddRange("С платежами", "Без платежей");
             convension.HeaderText = "Вид договора";
             convension.DataPropertyName = "type";
             dataGridView3.Columns.RemoveAt(2);
@@ -146,12 +147,12 @@ namespace VikCenter
 
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font(new FontFamily("Arial"), 10, FontStyle.Bold);
             dataGridView1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            //dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.Columns["contacts"].HeaderText = "Контактные лица";
             dataGridView1.Columns["name"].HeaderText = "Регистратор";
             dataGridView1.Columns["phone"].HeaderText = "Телефон";
             dataGridView1.Columns["email"].HeaderText = "E-mail";
-            dataGridView1.Columns["adress"].HeaderText = "Адресс";
+            dataGridView1.Columns["adress"].HeaderText = "Адрес";
             dataGridView1.Columns["site"].HeaderText = "Сайт";
             dataGridView1.Columns["terms"].HeaderText = "Условия работы";
 
@@ -186,20 +187,18 @@ namespace VikCenter
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             MainForm main = this.MdiParent as MainForm;
-            main.global.renewRegsTable();
+            main.global.regAdapter.Update(main.global.dataSet.registrators);
+            main.global.regAdapter.Fill(main.global.dataSet.registrators);
         }
 
         private void toolStripButton5_Click(object sender, EventArgs e)
         {
             MainForm main = this.MdiParent as MainForm;
-            main.global.renewArendaTable();
-
+            main.global.regAdapter.Update(main.global.dataSet.registrators);
+            main.global.regAdapter.Fill(main.global.dataSet.registrators);
         }
 
-        private void Regmod_ResizeEnd(object sender, EventArgs e)
-        {
-
-        }
+        
 
         //установка фильтра наименования регистратора
         private void toolStripButton2_Click(object sender, EventArgs e)
@@ -283,86 +282,23 @@ namespace VikCenter
         }
 
 
-        //удалить верхнего грида
-        private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
-        {
-            //не используется
-
-        }
-
-        private void toolStripButton9_Click(object sender, EventArgs e)
-        {        
-            int rowIndex =  dataGridView1.CurrentCell.RowIndex;
-            int currntValue = byte.Parse(dataGridView1.Rows[rowIndex].Cells["status"].Value.ToString());
-
-            registratorsTableAdapter adapter = new registratorsTableAdapter();
-            if  (currntValue == 0)
-            {
-                DialogResult result = MessageBox.Show("Удаление", "Пометить запись на удаление?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (result == System.Windows.Forms.DialogResult.Yes) 
-                {
-                    int curvalue = (int)(dataGridView1.Rows[rowIndex].Cells["id"].Value);
-                    //dataGridView1.Rows[rowIndex].Cells["Статус_строки"].Value = 1;
-                    adapter.DelByID(1, curvalue);
-                    MainForm main = this.MdiParent as MainForm;
-                    main.global.renewRegsTable();
-                    //new code
-                    adapter.Fill(main.global.dataSet.registrators);
-                    dataGridView1.CurrentRow.DefaultCellStyle.BackColor = Color.Gray;
-                    dataGridView1.CurrentRow.ReadOnly = true;
-                }
-            }
-            else
-            {
-                
-                DialogResult result = MessageBox.Show("Отменить удаление", "Отменить пометку записи?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (result == System.Windows.Forms.DialogResult.Yes)
-                {
-
-                    int curvalue = (int)(dataGridView1.Rows[rowIndex].Cells["id"].Value);
-                    //dataGridView1.Rows[rowIndex].Cells["Статус_строки"].Value = 0;
-                    adapter.DelByID(0, curvalue);
-                    main.global.renewRegsTable();
-                    adapter.Fill(main.global.dataSet.registrators);
-                    dataGridView1.CurrentRow.DefaultCellStyle.BackColor = Color.White;
-                    dataGridView1.CurrentRow.ReadOnly = false;
-                }
-            }
-            
-
-        }
-
-        private void dataGridView1_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
-        {
-            
-                
-        }
-
-        private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
-        {
-            
-        }
-
-        private void dataGridView1_RowValidated(object sender, DataGridViewCellEventArgs e)
-        {
-          /* if (dataGridView1.Rows[e.RowIndex].Cells["Статус_строки"].Value.ToString() == "0")
-                dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Red;**/
-            
-        }
-
         private void Regmod_FormClosing(object sender, FormClosingEventArgs e)
         {
             MainForm main = this.MdiParent as MainForm;
-            main.global.renewRegsTable();
-            main.global.renewArendaTable();
+
+            if (MessageBox.Show("Сохранить текущие изменения в базе?", "Закрытие окна...", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+            {
+                
+                main.global.renewRegsTable();
+                main.global.renewArendaTable();
+               
+            }
             main.global.Windows = main.global.Windows ^ Global.WindowsOpen.RegistratorsMod;
         }
 
-        private void toolStripComboBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
+/*================================================================================================================
+ * ==========================DATAGRIDVIEW3 ENENT HANDLERS========================================================
+ * ==============================================================================================================*/
         //пометка на удаление аренды 
         private void toolStripButton10_Click(object sender, EventArgs e)
         {
@@ -405,29 +341,7 @@ namespace VikCenter
             }
         }
 
-        private void dataGridView1_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
-        {
-            int status = 0;
-            try
-            {
-                status = int.Parse(dataGridView1.Rows[e.RowIndex].Cells["status"].Value.ToString());
-            }
-            catch (Exception)
-            {
-                
-            }
 
-            if (status == 0)
-            {
-                dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White;
-                //dataGridView1.Rows[e.RowIndex].ReadOnly = true;
-            }
-            if (status == 1)
-            {
-                dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Gray;
-                //dataGridView1.Rows[e.RowIndex].ReadOnly = false;
-            }
-        }
 
         private void dataGridView3_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
@@ -452,36 +366,57 @@ namespace VikCenter
                // dataGridView3.Rows[e.RowIndex].ReadOnly = false;
             }
         }
-
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void информацияОбИзмененииToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            string s = dataGridView3.CurrentRow.Cells["create_time"].Value.ToString();
+            string s2 = dataGridView3.CurrentRow.Cells["create_login"].Value.ToString();
+            string s3 = dataGridView3.CurrentRow.Cells["edit_time"].Value.ToString();
+            string s4 = dataGridView3.CurrentRow.Cells["edit_login"].Value.ToString();
+            RowInfoForm info = new RowInfoForm(s, s2, s3, s4);
+            info.ShowDialog();
         }
-
-        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void dataGridView3_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.Button == System.Windows.Forms.MouseButtons.Right)
             {
                 Point p = Cursor.Position;
-                contextMenuStrip1.Show(p);
+                contextMenuStrip2.Show(p);
             }
         }
-
-        private void информацияОИзмененииToolStripMenuItem_Click(object sender, EventArgs e)
+        //кнопка обновление нижняя
+        private void toolStripButton12_Click(object sender, EventArgs e)
         {
-            string s = dataGridView1.CurrentRow.Cells["create_time"].Value.ToString();
-            string s2 = dataGridView1.CurrentRow.Cells["create_login"].Value.ToString();
-            string s3 = dataGridView1.CurrentRow.Cells["edit_time"].Value.ToString();
-            string s4 = dataGridView1.CurrentRow.Cells["edit_login"].Value.ToString();
-            RowInfoForm info = new RowInfoForm(s,s2,s3,s4);
-            info.ShowDialog();
+            main.global.regAdapter.Fill(main.global.dataSet.registrators);
         }
 
-        private void dataGridView1_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        private void dataGridView3_CellParsing(object sender, DataGridViewCellParsingEventArgs e)
         {
-
+            Font currentFont = dataGridView1.DefaultCellStyle.Font;
+            dataGridView3.CurrentCell.Style.Font = new Font(currentFont, FontStyle.Bold);
+            dataGridView3.Rows[e.RowIndex].Cells["edit_login"].Value = main.global.LoginInfo.Login;
+            dataGridView3.Rows[e.RowIndex].Cells["edit_time"].Value = DateTime.Now;
+        }
+        private void dataGridView3_UserAddedRow(object sender, DataGridViewRowEventArgs e)
+        {
+            e.Row.Cells["create_login"].Value = main.global.LoginInfo.Login;
+            e.Row.Cells["create_time"].Value = DateTime.Now;
         }
 
+        //===========================DATAGRIDVIEW 1 EVENTS HANDLERS==================================================
+        //===========================================================================================================
+        private void dataGridView1_UserAddedRow(object sender, DataGridViewRowEventArgs e)
+        {
+            e.Row.Cells["create_login"].Value = main.global.LoginInfo.Login;
+            e.Row.Cells["create_time"].Value = DateTime.Now;
+        }
+        private void dataGridView1_CellParsing(object sender, DataGridViewCellParsingEventArgs e)
+        {
+            //MessageBox.Show("test");
+            dataGridView1.Rows[e.RowIndex].Cells["edit_login"].Value = main.global.LoginInfo.Login;
+            dataGridView1.Rows[e.RowIndex].Cells["edit_time"].Value = DateTime.Now;
+            Font currentFont = dataGridView1.DefaultCellStyle.Font;
+            dataGridView1.CurrentCell.Style.Font = new Font(currentFont, FontStyle.Bold);
+        }
         //кнопка обновление верхняя
         private void toolStripButton11_Click(object sender, EventArgs e)
         {
@@ -489,35 +424,92 @@ namespace VikCenter
             main.global.regAdapter.Fill(main.global.dataSet.registrators);
 
         }
-
-        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+            {
+                Point p = Cursor.Position;
+                contextMenuStrip1.Show(p);
+            }
 
         }
-
-        private void dataGridView1_CellStateChanged(object sender, DataGridViewCellStateChangedEventArgs e)
+        private void информацияОИзмененииToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            string s = dataGridView1.CurrentRow.Cells["create_time"].Value.ToString();
+            string s2 = dataGridView1.CurrentRow.Cells["create_login"].Value.ToString();
+            string s3 = dataGridView1.CurrentRow.Cells["edit_time"].Value.ToString();
+            string s4 = dataGridView1.CurrentRow.Cells["edit_login"].Value.ToString();
+            RowInfoForm info = new RowInfoForm(s, s2, s3, s4);
+            info.ShowDialog();
+        }
+        private void dataGridView1_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            int status = 0;
+            try
+            {
+                status = int.Parse(dataGridView1.Rows[e.RowIndex].Cells["status"].Value.ToString());
+            }
+            catch (Exception)
+            {
 
+            }
+
+            if (status == 0)
+            {
+                dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White;
+                //dataGridView1.Rows[e.RowIndex].ReadOnly = true;
+            }
+            if (status == 1)
+            {
+                dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Gray;
+                //dataGridView1.Rows[e.RowIndex].ReadOnly = false;
+            }
+        }
+        private void toolStripButton9_Click(object sender, EventArgs e)
+        {
+            int rowIndex = dataGridView1.CurrentCell.RowIndex;
+            int currntValue = byte.Parse(dataGridView1.Rows[rowIndex].Cells["status"].Value.ToString());
+
+            registratorsTableAdapter adapter = new registratorsTableAdapter();
+            if (currntValue == 0)
+            {
+                DialogResult result = MessageBox.Show("Удаление", "Пометить запись на удаление?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == System.Windows.Forms.DialogResult.Yes)
+                {
+                    int curvalue = (int)(dataGridView1.Rows[rowIndex].Cells["id"].Value);
+                    //dataGridView1.Rows[rowIndex].Cells["Статус_строки"].Value = 1;
+                    adapter.DelByID(1, curvalue);
+                    MainForm main = this.MdiParent as MainForm;
+                    main.global.renewRegsTable();
+                    //new code
+                    adapter.Fill(main.global.dataSet.registrators);
+                    dataGridView1.CurrentRow.DefaultCellStyle.BackColor = Color.Gray;
+                    dataGridView1.CurrentRow.ReadOnly = true;
+                }
+            }
+            else
+            {
+
+                DialogResult result = MessageBox.Show("Отменить удаление", "Отменить пометку записи?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == System.Windows.Forms.DialogResult.Yes)
+                {
+
+                    int curvalue = (int)(dataGridView1.Rows[rowIndex].Cells["id"].Value);
+                    //dataGridView1.Rows[rowIndex].Cells["Статус_строки"].Value = 0;
+                    adapter.DelByID(0, curvalue);
+                    main.global.renewRegsTable();
+                    adapter.Fill(main.global.dataSet.registrators);
+                    dataGridView1.CurrentRow.DefaultCellStyle.BackColor = Color.White;
+                    dataGridView1.CurrentRow.ReadOnly = false;
+                }
+            }
         }
 
-        private void dataGridView1_CellParsing(object sender, DataGridViewCellParsingEventArgs e)
-        {
-            //MessageBox.Show("test");
-            dataGridView1.Rows[e.RowIndex].Cells["edit_login"].Value = main.global.LoginInfo.Login;
-            dataGridView1.Rows[e.RowIndex].Cells["edit_time"].Value = DateTime.Now;
-        }
 
-        //кнопка обновление нижняя
-        private void toolStripButton12_Click(object sender, EventArgs e)
-        {
-            main.global.regAdapter.Fill(main.global.dataSet.registrators);
-        }
 
-        private void dataGridView1_UserAddedRow(object sender, DataGridViewRowEventArgs e)
-        {
-            e.Row.Cells["create_login"].Value = main.global.LoginInfo.Login;
-            e.Row.Cells["create_time"].Value = DateTime.Now;
-        }
+
+
+
 
     }
 }

@@ -82,7 +82,7 @@ namespace VikCenter
 
             if (comboBox2.Enabled)
             {
-                if (comboBox2.Text == "Все") men1 = ""; else men1 = comboBox2.Text;
+                if (comboBox2.Text == "Все") men2 = ""; else men2 = comboBox2.Text;
             }
 
 

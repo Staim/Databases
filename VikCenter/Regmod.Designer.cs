@@ -33,6 +33,9 @@
             this.splitAll = new System.Windows.Forms.SplitContainer();
             this.splitTop = new System.Windows.Forms.SplitContainer();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.информацияОИзмененииToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.комментарийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
@@ -81,11 +84,10 @@
             this.toolStripTextBox3 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.информацияОИзмененииToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.комментарийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.информацияОбИзмененииToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitAll)).BeginInit();
             this.splitAll.Panel1.SuspendLayout();
             this.splitAll.Panel2.SuspendLayout();
@@ -95,6 +97,7 @@
             this.splitTop.Panel2.SuspendLayout();
             this.splitTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitBottom)).BeginInit();
@@ -104,9 +107,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator2)).BeginInit();
             this.bindingNavigator2.SuspendLayout();
-            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            this.contextMenuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitAll
@@ -151,20 +154,39 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGridView1.RowTemplate.ContextMenuStrip = this.contextMenuStrip1;
             this.dataGridView1.Size = new System.Drawing.Size(936, 154);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
-            this.dataGridView1.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView1_CellPainting);
             this.dataGridView1.CellParsing += new System.Windows.Forms.DataGridViewCellParsingEventHandler(this.dataGridView1_CellParsing);
-            this.dataGridView1.CellStateChanged += new System.Windows.Forms.DataGridViewCellStateChangedEventHandler(this.dataGridView1_CellStateChanged);
-            this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             this.dataGridView1.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dataGridView1_RowPrePaint);
-            this.dataGridView1.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView1_RowsAdded);
             this.dataGridView1.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dataGridView1_UserAddedRow);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.информацияОИзмененииToolStripMenuItem,
+            this.комментарийToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(243, 48);
+            // 
+            // информацияОИзмененииToolStripMenuItem
+            // 
+            this.информацияОИзмененииToolStripMenuItem.Name = "информацияОИзмененииToolStripMenuItem";
+            this.информацияОИзмененииToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
+            this.информацияОИзмененииToolStripMenuItem.Text = "Дополнительная информация";
+            this.информацияОИзмененииToolStripMenuItem.Click += new System.EventHandler(this.информацияОИзмененииToolStripMenuItem_Click);
+            // 
+            // комментарийToolStripMenuItem
+            // 
+            this.комментарийToolStripMenuItem.Name = "комментарийToolStripMenuItem";
+            this.комментарийToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
+            this.комментарийToolStripMenuItem.Text = "Комментарий";
             // 
             // bindingNavigator1
             // 
@@ -394,7 +416,6 @@
             this.toolStripComboBox1.Name = "toolStripComboBox1";
             this.toolStripComboBox1.Size = new System.Drawing.Size(121, 25);
             this.toolStripComboBox1.Text = "Все";
-            this.toolStripComboBox1.Click += new System.EventHandler(this.toolStripComboBox1_Click);
             this.toolStripComboBox1.TextChanged += new System.EventHandler(this.toolStripComboBox1_TextChanged);
             // 
             // toolStripLabel4
@@ -450,7 +471,9 @@
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.Size = new System.Drawing.Size(936, 153);
             this.dataGridView3.TabIndex = 0;
-            this.dataGridView3.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dataGridView3_RowPrePaint);
+            this.dataGridView3.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView3_CellMouseClick);
+            this.dataGridView3.CellParsing += new System.Windows.Forms.DataGridViewCellParsingEventHandler(this.dataGridView3_CellParsing);
+            this.dataGridView3.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dataGridView3_UserAddedRow);
             // 
             // bindingNavigator2
             // 
@@ -683,26 +706,19 @@
             this.toolStripButton4.ToolTipText = " ";
             this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
-            // contextMenuStrip1
+            // contextMenuStrip2
             // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.информацияОИзмененииToolStripMenuItem,
-            this.комментарийToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(223, 48);
+            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.информацияОбИзмененииToolStripMenuItem});
+            this.contextMenuStrip2.Name = "contextMenuStrip2";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(243, 26);
             // 
-            // информацияОИзмененииToolStripMenuItem
+            // информацияОбИзмененииToolStripMenuItem
             // 
-            this.информацияОИзмененииToolStripMenuItem.Name = "информацияОИзмененииToolStripMenuItem";
-            this.информацияОИзмененииToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
-            this.информацияОИзмененииToolStripMenuItem.Text = "Информация о изменении";
-            this.информацияОИзмененииToolStripMenuItem.Click += new System.EventHandler(this.информацияОИзмененииToolStripMenuItem_Click);
-            // 
-            // комментарийToolStripMenuItem
-            // 
-            this.комментарийToolStripMenuItem.Name = "комментарийToolStripMenuItem";
-            this.комментарийToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
-            this.комментарийToolStripMenuItem.Text = "Комментарий";
+            this.информацияОбИзмененииToolStripMenuItem.Name = "информацияОбИзмененииToolStripMenuItem";
+            this.информацияОбИзмененииToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
+            this.информацияОбИзмененииToolStripMenuItem.Text = "Дополнительная информация";
+            this.информацияОбИзмененииToolStripMenuItem.Click += new System.EventHandler(this.информацияОбИзмененииToolStripMenuItem_Click);
             // 
             // Regmod
             // 
@@ -715,7 +731,6 @@
             this.Text = "Регистраторы";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Regmod_FormClosing);
             this.Load += new System.EventHandler(this.Regmod_Load);
-            this.ResizeEnd += new System.EventHandler(this.Regmod_ResizeEnd);
             this.splitAll.Panel1.ResumeLayout(false);
             this.splitAll.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitAll)).EndInit();
@@ -726,6 +741,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitTop)).EndInit();
             this.splitTop.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
@@ -738,9 +754,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator2)).EndInit();
             this.bindingNavigator2.ResumeLayout(false);
             this.bindingNavigator2.PerformLayout();
-            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            this.contextMenuStrip2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -803,5 +819,7 @@
         private System.Windows.Forms.ToolStripButton toolStripButton10;
         private System.Windows.Forms.ToolStripButton toolStripButton11;
         private System.Windows.Forms.ToolStripButton toolStripButton12;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem информацияОбИзмененииToolStripMenuItem;
     }
 }
