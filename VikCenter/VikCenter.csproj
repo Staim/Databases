@@ -249,6 +249,84 @@
   <ItemGroup>
     <None Include="Resources\update.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\power.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu_dannie.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rabota_s_registr.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zvezdo4ka.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ot4et.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ot4et2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\okna.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\okna1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\check1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nazad.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nazad2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vpered2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vpered21.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vpered.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vpered3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\otmena1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vagno.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\poisk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\telephone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vstre4a.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dop_info.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

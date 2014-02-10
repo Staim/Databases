@@ -16,6 +16,8 @@ namespace VikCenter
     {
         private MainForm main;
         private BindingSource bindingSource3;
+        private int registratorRowPosition = 0;
+        private int contractRowPostion = 0;
 
         public Regmod()
         {
@@ -26,6 +28,9 @@ namespace VikCenter
         {
             //get data
             main = this.MdiParent as MainForm;
+            
+            main.global.regAdapter.Fill(main.global.dataSet.registrators);
+            main.global.arendaAdapter.Fill(main.global.dataSet.contracts);
 
             bindingSource1 = new BindingSource(main.global.dataSet, "registrators");
 
@@ -54,6 +59,7 @@ namespace VikCenter
             dataGridView3.Columns["status"].Visible = false;
             //dataGridView3.Columns["man1_proc"].Visible = false;
             dataGridView3.Columns["comment"].Visible = false;
+            dataGridView3.Columns["man_v_proc"].Visible = false;
             dataGridView3.Columns["name"].HeaderText = "Организация";
             dataGridView3.Columns["contr_number"].HeaderText = "№ Договора";
             dataGridView3.Columns["sum"].HeaderText = "Сумма";
@@ -187,15 +193,24 @@ namespace VikCenter
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             MainForm main = this.MdiParent as MainForm;
+            registratorRowPosition = bindingSource1.Position;
+            contractRowPostion = bindingSource3.Position;
             main.global.regAdapter.Update(main.global.dataSet.registrators);
             main.global.regAdapter.Fill(main.global.dataSet.registrators);
+            bindingSource1.Position = registratorRowPosition;
+            bindingSource3.Position = contractRowPostion;
+
         }
 
         private void toolStripButton5_Click(object sender, EventArgs e)
         {
             MainForm main = this.MdiParent as MainForm;
-            main.global.regAdapter.Update(main.global.dataSet.registrators);
+            contractRowPostion = bindingSource3.Position;
+            registratorRowPosition = bindingSource1.Position;
+            main.global.arendaAdapter.Update(main.global.dataSet.contracts);
             main.global.regAdapter.Fill(main.global.dataSet.registrators);
+            bindingSource3.Position = contractRowPostion;
+            bindingSource1.Position = registratorRowPosition;
         }
 
         
@@ -503,6 +518,24 @@ namespace VikCenter
                     dataGridView1.CurrentRow.ReadOnly = false;
                 }
             }
+        }
+
+        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void bindingNavigatorAddNewItem1_Click(object sender, EventArgs e)
+        {
+            if (bindingSource3.Position == 0)
+            {
+                dataGridView3.Rows[bindingSource3.Position].Cells["man_v_proc"].Value = 500;
+            }
+        }
+
+        private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
 
 

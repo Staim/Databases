@@ -4,6 +4,11 @@
 
     public partial class DataSet1
     {
+        partial class JoinTableDataTable
+        {
+
+        }
+    
         partial class contractsDataTable
         {
 

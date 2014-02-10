@@ -95,6 +95,7 @@ namespace VikCenter
 
         private void SetUpDataGrid2()
         {
+            
             datagridview1.Columns["name"].HeaderText = "Организация";
             datagridview1.Columns["sum"].HeaderText = "Сумма";
             datagridview1.Columns["sum"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -106,7 +107,8 @@ namespace VikCenter
             datagridview1.Columns["pay_date"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             datagridview1.Columns["man1"].HeaderText = "Холодный звонок";
             datagridview1.Columns["man2"].HeaderText = "Встреча";
-            datagridview1.Columns["man2_proc"].HeaderText = "% мен. встреча";
+            datagridview1.Columns["man2_proc"].HeaderText = "% мен. звонок";
+            datagridview1.Columns["man_v_proc"].HeaderText = "% мен. встреча";
             datagridview1.Columns["man2_proc"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             datagridview1.ColumnHeadersDefaultCellStyle.Font = new Font(new FontFamily("Arial"), 10, FontStyle.Bold);
             datagridview1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;

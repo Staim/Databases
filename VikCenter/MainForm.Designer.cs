@@ -30,22 +30,22 @@
         {
             this.components = new System.ComponentModel.Container();
             this.MainMenu = new System.Windows.Forms.MenuStrip();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходИзУчетнойЗаписиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.данныеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.регистраторыСДоговорамиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.регистраторыУдалениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.историяРедактированияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.менеджерыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.отчетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.своднаяТаблицаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.excelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сводныеДанныеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.окнаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.каскадомToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.statusStrip = new System.Windows.Forms.StatusStrip();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.регистраторыСДоговорамиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.регистраторыУдалениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.историяРедактированияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.сводныеДанныеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.вертикальноToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.горизонтальноToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainMenu.SuspendLayout();
@@ -64,17 +64,32 @@
             this.MainMenu.TabIndex = 1;
             this.MainMenu.Text = "menuStrip1";
             // 
+            // statusStrip
+            // 
+            this.statusStrip.Location = new System.Drawing.Point(0, 329);
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.Size = new System.Drawing.Size(698, 22);
+            this.statusStrip.TabIndex = 2;
+            this.statusStrip.Text = "statusStrip1";
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 60000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // файлToolStripMenuItem
             // 
             this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.выходToolStripMenuItem,
             this.выходИзУчетнойЗаписиToolStripMenuItem});
+            this.файлToolStripMenuItem.Image = global::VikCenter.Properties.Resources.home;
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
             this.файлToolStripMenuItem.Text = "Файл";
             // 
             // выходToolStripMenuItem
             // 
+            this.выходToolStripMenuItem.Image = global::VikCenter.Properties.Resources.power;
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
             this.выходToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
             this.выходToolStripMenuItem.Text = "Выход";
@@ -82,6 +97,7 @@
             // 
             // выходИзУчетнойЗаписиToolStripMenuItem
             // 
+            this.выходИзУчетнойЗаписиToolStripMenuItem.Image = global::VikCenter.Properties.Resources.power;
             this.выходИзУчетнойЗаписиToolStripMenuItem.Name = "выходИзУчетнойЗаписиToolStripMenuItem";
             this.выходИзУчетнойЗаписиToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
             this.выходИзУчетнойЗаписиToolStripMenuItem.Text = "Выход из учетной записи";
@@ -93,9 +109,32 @@
             this.регистраторыУдалениеToolStripMenuItem,
             this.историяРедактированияToolStripMenuItem,
             this.менеджерыToolStripMenuItem});
+            this.данныеToolStripMenuItem.Image = global::VikCenter.Properties.Resources.menu_dannie;
             this.данныеToolStripMenuItem.Name = "данныеToolStripMenuItem";
-            this.данныеToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
+            this.данныеToolStripMenuItem.Size = new System.Drawing.Size(78, 20);
             this.данныеToolStripMenuItem.Text = "Данные";
+            // 
+            // регистраторыСДоговорамиToolStripMenuItem
+            // 
+            this.регистраторыСДоговорамиToolStripMenuItem.Image = global::VikCenter.Properties.Resources.rabota_s_registr;
+            this.регистраторыСДоговорамиToolStripMenuItem.Name = "регистраторыСДоговорамиToolStripMenuItem";
+            this.регистраторыСДоговорамиToolStripMenuItem.Size = new System.Drawing.Size(271, 22);
+            this.регистраторыСДоговорамиToolStripMenuItem.Text = "Регистраторы -> Работа с данными";
+            this.регистраторыСДоговорамиToolStripMenuItem.Click += new System.EventHandler(this.регистраторыСДоговорамиToolStripMenuItem_Click);
+            // 
+            // регистраторыУдалениеToolStripMenuItem
+            // 
+            this.регистраторыУдалениеToolStripMenuItem.Image = global::VikCenter.Properties.Resources.edit;
+            this.регистраторыУдалениеToolStripMenuItem.Name = "регистраторыУдалениеToolStripMenuItem";
+            this.регистраторыУдалениеToolStripMenuItem.Size = new System.Drawing.Size(271, 22);
+            this.регистраторыУдалениеToolStripMenuItem.Text = "Регистраторы - > Удаление";
+            // 
+            // историяРедактированияToolStripMenuItem
+            // 
+            this.историяРедактированияToolStripMenuItem.Image = global::VikCenter.Properties.Resources.zvezdo4ka;
+            this.историяРедактированияToolStripMenuItem.Name = "историяРедактированияToolStripMenuItem";
+            this.историяРедактированияToolStripMenuItem.Size = new System.Drawing.Size(271, 22);
+            this.историяРедактированияToolStripMenuItem.Text = "История редактирования";
             // 
             // менеджерыToolStripMenuItem
             // 
@@ -109,8 +148,9 @@
             this.своднаяТаблицаToolStripMenuItem,
             this.excelToolStripMenuItem,
             this.сводныеДанныеToolStripMenuItem});
+            this.отчетыToolStripMenuItem.Image = global::VikCenter.Properties.Resources.ot4et;
             this.отчетыToolStripMenuItem.Name = "отчетыToolStripMenuItem";
-            this.отчетыToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.отчетыToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
             this.отчетыToolStripMenuItem.Text = "Отчеты";
             // 
             // своднаяТаблицаToolStripMenuItem
@@ -126,14 +166,23 @@
             this.excelToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.excelToolStripMenuItem.Text = "Excel";
             // 
+            // сводныеДанныеToolStripMenuItem
+            // 
+            this.сводныеДанныеToolStripMenuItem.Image = global::VikCenter.Properties.Resources.ot4et2;
+            this.сводныеДанныеToolStripMenuItem.Name = "сводныеДанныеToolStripMenuItem";
+            this.сводныеДанныеToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.сводныеДанныеToolStripMenuItem.Text = "Сводные данные";
+            this.сводныеДанныеToolStripMenuItem.Click += new System.EventHandler(this.сводныеДанныеToolStripMenuItem_Click);
+            // 
             // окнаToolStripMenuItem
             // 
             this.окнаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.каскадомToolStripMenuItem,
             this.вертикальноToolStripMenuItem,
             this.горизонтальноToolStripMenuItem});
+            this.окнаToolStripMenuItem.Image = global::VikCenter.Properties.Resources.okna1;
             this.окнаToolStripMenuItem.Name = "окнаToolStripMenuItem";
-            this.окнаToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.окнаToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
             this.окнаToolStripMenuItem.Text = "Окна";
             // 
             // каскадомToolStripMenuItem
@@ -143,52 +192,8 @@
             this.каскадомToolStripMenuItem.Text = "Каскадом";
             this.каскадомToolStripMenuItem.Click += new System.EventHandler(this.каскадомToolStripMenuItem_Click);
             // 
-            // statusStrip
-            // 
-            this.statusStrip.Location = new System.Drawing.Point(0, 329);
-            this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(698, 22);
-            this.statusStrip.TabIndex = 2;
-            this.statusStrip.Text = "statusStrip1";
-            // 
-            // timer1
-            // 
-            this.timer1.Interval = 60000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // регистраторыСДоговорамиToolStripMenuItem
-            // 
-            this.регистраторыСДоговорамиToolStripMenuItem.Image = global::VikCenter.Properties.Resources._12;
-            this.регистраторыСДоговорамиToolStripMenuItem.Name = "регистраторыСДоговорамиToolStripMenuItem";
-            this.регистраторыСДоговорамиToolStripMenuItem.Size = new System.Drawing.Size(271, 22);
-            this.регистраторыСДоговорамиToolStripMenuItem.Text = "Регистраторы -> Работа с данными";
-            this.регистраторыСДоговорамиToolStripMenuItem.Click += new System.EventHandler(this.регистраторыСДоговорамиToolStripMenuItem_Click);
-            // 
-            // регистраторыУдалениеToolStripMenuItem
-            // 
-            this.регистраторыУдалениеToolStripMenuItem.Image = global::VikCenter.Properties.Resources._11;
-            this.регистраторыУдалениеToolStripMenuItem.Name = "регистраторыУдалениеToolStripMenuItem";
-            this.регистраторыУдалениеToolStripMenuItem.Size = new System.Drawing.Size(271, 22);
-            this.регистраторыУдалениеToolStripMenuItem.Text = "Регистраторы - > Удаление";
-            // 
-            // историяРедактированияToolStripMenuItem
-            // 
-            this.историяРедактированияToolStripMenuItem.Image = global::VikCenter.Properties.Resources._14;
-            this.историяРедактированияToolStripMenuItem.Name = "историяРедактированияToolStripMenuItem";
-            this.историяРедактированияToolStripMenuItem.Size = new System.Drawing.Size(271, 22);
-            this.историяРедактированияToolStripMenuItem.Text = "История редактирования";
-            // 
-            // сводныеДанныеToolStripMenuItem
-            // 
-            this.сводныеДанныеToolStripMenuItem.Image = global::VikCenter.Properties.Resources._13;
-            this.сводныеДанныеToolStripMenuItem.Name = "сводныеДанныеToolStripMenuItem";
-            this.сводныеДанныеToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
-            this.сводныеДанныеToolStripMenuItem.Text = "Сводные данные";
-            this.сводныеДанныеToolStripMenuItem.Click += new System.EventHandler(this.сводныеДанныеToolStripMenuItem_Click);
-            // 
             // вертикальноToolStripMenuItem
             // 
-            this.вертикальноToolStripMenuItem.Image = global::VikCenter.Properties.Resources._8;
             this.вертикальноToolStripMenuItem.Name = "вертикальноToolStripMenuItem";
             this.вертикальноToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.вертикальноToolStripMenuItem.Text = "Вертикально";
@@ -196,7 +201,6 @@
             // 
             // горизонтальноToolStripMenuItem
             // 
-            this.горизонтальноToolStripMenuItem.Image = global::VikCenter.Properties.Resources._9;
             this.горизонтальноToolStripMenuItem.Name = "горизонтальноToolStripMenuItem";
             this.горизонтальноToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.горизонтальноToolStripMenuItem.Text = "Горизонтально";
