@@ -22,3 +22,5 @@ C:\Users\krl\Desktop\project\Databases\VikCenter\obj\Debug\VikCenter.Regmod.reso
 C:\Users\krl\Desktop\project\Databases\VikCenter\obj\Debug\VikCenter.Report.resources
 C:\Users\krl\Desktop\project\Databases\VikCenter\obj\Debug\VikCenter.RowInfoForm.resources
 C:\Users\krl\Desktop\project\Databases\VikCenter\obj\Debug\VikCenter.Form1.resources
+C:\Users\krl\Desktop\project\Databases\VikCenter\bin\Debug\MySql.Data.dll
+C:\Users\krl\Desktop\project\Databases\VikCenter\bin\Debug\Microsoft.CSharp.dll

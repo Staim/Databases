@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VikCenter", "VikCenter\VikCenter.csproj", "{F4D0A975-4DF8-4333-B834-3C348A3E269F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordTest", "..\..\WordTest\WordTest\WordTest.csproj", "{BD7DB075-D5E0-43E4-BD5D-ACAD0A77FE6F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +26,16 @@ Global
 		{F4D0A975-4DF8-4333-B834-3C348A3E269F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{F4D0A975-4DF8-4333-B834-3C348A3E269F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{F4D0A975-4DF8-4333-B834-3C348A3E269F}.Release|x86.ActiveCfg = Release|Any CPU
+		{BD7DB075-D5E0-43E4-BD5D-ACAD0A77FE6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD7DB075-D5E0-43E4-BD5D-ACAD0A77FE6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD7DB075-D5E0-43E4-BD5D-ACAD0A77FE6F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{BD7DB075-D5E0-43E4-BD5D-ACAD0A77FE6F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{BD7DB075-D5E0-43E4-BD5D-ACAD0A77FE6F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BD7DB075-D5E0-43E4-BD5D-ACAD0A77FE6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD7DB075-D5E0-43E4-BD5D-ACAD0A77FE6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD7DB075-D5E0-43E4-BD5D-ACAD0A77FE6F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{BD7DB075-D5E0-43E4-BD5D-ACAD0A77FE6F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{BD7DB075-D5E0-43E4-BD5D-ACAD0A77FE6F}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

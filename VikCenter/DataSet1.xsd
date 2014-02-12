@@ -477,7 +477,7 @@ WHERE        (id = @Param2id)</CommandText>
   <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="logins" msprop:Generator_TableClassName="loginsDataTable" msprop:Generator_TableVarName="tablelogins" msprop:Generator_RowChangedName="loginsRowChanged" msprop:Generator_TablePropName="logins" msprop:Generator_RowDeletingName="loginsRowDeleting" msprop:Generator_RowChangingName="loginsRowChanging" msprop:Generator_RowEvHandlerName="loginsRowChangeEventHandler" msprop:Generator_RowDeletedName="loginsRowDeleted" msprop:Generator_RowClassName="loginsRow" msprop:Generator_UserTableName="logins" msprop:Generator_RowEvArgName="loginsRowChangeEvent">
+        <xs:element name="logins" msprop:Generator_TableClassName="loginsDataTable" msprop:Generator_TableVarName="tablelogins" msprop:Generator_TablePropName="logins" msprop:Generator_RowDeletingName="loginsRowDeleting" msprop:Generator_RowChangingName="loginsRowChanging" msprop:Generator_RowEvHandlerName="loginsRowChangeEventHandler" msprop:Generator_RowDeletedName="loginsRowDeleted" msprop:Generator_UserTableName="logins" msprop:Generator_RowChangedName="loginsRowChanged" msprop:Generator_RowEvArgName="loginsRowChangeEvent" msprop:Generator_RowClassName="loginsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -505,7 +505,7 @@ WHERE        (id = @Param2id)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="stations" msprop:Generator_TableClassName="stationsDataTable" msprop:Generator_TableVarName="tablestations" msprop:Generator_RowChangedName="stationsRowChanged" msprop:Generator_TablePropName="stations" msprop:Generator_RowDeletingName="stationsRowDeleting" msprop:Generator_RowChangingName="stationsRowChanging" msprop:Generator_RowEvHandlerName="stationsRowChangeEventHandler" msprop:Generator_RowDeletedName="stationsRowDeleted" msprop:Generator_RowClassName="stationsRow" msprop:Generator_UserTableName="stations" msprop:Generator_RowEvArgName="stationsRowChangeEvent">
+        <xs:element name="stations" msprop:Generator_TableClassName="stationsDataTable" msprop:Generator_TableVarName="tablestations" msprop:Generator_TablePropName="stations" msprop:Generator_RowDeletingName="stationsRowDeleting" msprop:Generator_RowChangingName="stationsRowChanging" msprop:Generator_RowEvHandlerName="stationsRowChangeEventHandler" msprop:Generator_RowDeletedName="stationsRowDeleted" msprop:Generator_UserTableName="stations" msprop:Generator_RowChangedName="stationsRowChanged" msprop:Generator_RowEvArgName="stationsRowChangeEvent" msprop:Generator_RowClassName="stationsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -519,7 +519,7 @@ WHERE        (id = @Param2id)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="registrators" msprop:Generator_TableClassName="registratorsDataTable" msprop:Generator_TableVarName="tableregistrators" msprop:Generator_TablePropName="registrators" msprop:Generator_RowDeletingName="registratorsRowDeleting" msprop:Generator_RowChangingName="registratorsRowChanging" msprop:Generator_RowEvHandlerName="registratorsRowChangeEventHandler" msprop:Generator_RowDeletedName="registratorsRowDeleted" msprop:Generator_UserTableName="registrators" msprop:Generator_RowChangedName="registratorsRowChanged" msprop:Generator_RowEvArgName="registratorsRowChangeEvent" msprop:Generator_RowClassName="registratorsRow">
+        <xs:element name="registrators" msprop:Generator_TableClassName="registratorsDataTable" msprop:Generator_TableVarName="tableregistrators" msprop:Generator_RowChangedName="registratorsRowChanged" msprop:Generator_TablePropName="registrators" msprop:Generator_RowDeletingName="registratorsRowDeleting" msprop:Generator_RowChangingName="registratorsRowChanging" msprop:Generator_RowEvHandlerName="registratorsRowChangeEventHandler" msprop:Generator_RowDeletedName="registratorsRowDeleted" msprop:Generator_RowClassName="registratorsRow" msprop:Generator_UserTableName="registrators" msprop:Generator_RowEvArgName="registratorsRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -614,7 +614,7 @@ WHERE        (id = @Param2id)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="JoinTable" msprop:Generator_TableClassName="JoinTableDataTable" msprop:Generator_TableVarName="tableJoinTable" msprop:Generator_TablePropName="JoinTable" msprop:Generator_RowDeletingName="JoinTableRowDeleting" msprop:Generator_RowChangingName="JoinTableRowChanging" msprop:Generator_RowEvHandlerName="JoinTableRowChangeEventHandler" msprop:Generator_RowDeletedName="JoinTableRowDeleted" msprop:Generator_UserTableName="JoinTable" msprop:Generator_RowChangedName="JoinTableRowChanged" msprop:Generator_RowEvArgName="JoinTableRowChangeEvent" msprop:Generator_RowClassName="JoinTableRow">
+        <xs:element name="JoinTable" msprop:Generator_TableClassName="JoinTableDataTable" msprop:Generator_TableVarName="tableJoinTable" msprop:Generator_RowChangedName="JoinTableRowChanged" msprop:Generator_TablePropName="JoinTable" msprop:Generator_RowDeletingName="JoinTableRowDeleting" msprop:Generator_RowChangingName="JoinTableRowChanging" msprop:Generator_RowEvHandlerName="JoinTableRowChangeEventHandler" msprop:Generator_RowDeletedName="JoinTableRowDeleted" msprop:Generator_RowClassName="JoinTableRow" msprop:Generator_UserTableName="JoinTable" msprop:Generator_RowEvArgName="JoinTableRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name" minOccurs="0">
@@ -659,7 +659,7 @@ WHERE        (id = @Param2id)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="contracts" msprop:Generator_TableClassName="contractsDataTable" msprop:Generator_TableVarName="tablecontracts" msprop:Generator_TablePropName="contracts" msprop:Generator_RowDeletingName="contractsRowDeleting" msprop:Generator_RowChangingName="contractsRowChanging" msprop:Generator_RowEvHandlerName="contractsRowChangeEventHandler" msprop:Generator_RowDeletedName="contractsRowDeleted" msprop:Generator_UserTableName="contracts" msprop:Generator_RowChangedName="contractsRowChanged" msprop:Generator_RowEvArgName="contractsRowChangeEvent" msprop:Generator_RowClassName="contractsRow">
+        <xs:element name="contracts" msprop:Generator_TableClassName="contractsDataTable" msprop:Generator_TableVarName="tablecontracts" msprop:Generator_RowChangedName="contractsRowChanged" msprop:Generator_TablePropName="contracts" msprop:Generator_RowDeletingName="contractsRowDeleting" msprop:Generator_RowChangingName="contractsRowChanging" msprop:Generator_RowEvHandlerName="contractsRowChangeEventHandler" msprop:Generator_RowDeletedName="contractsRowDeleted" msprop:Generator_RowClassName="contractsRow" msprop:Generator_UserTableName="contracts" msprop:Generator_RowEvArgName="contractsRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -688,7 +688,7 @@ WHERE        (id = @Param2id)</CommandText>
               <xs:element name="contr_number" msprop:Generator_ColumnVarNameInTable="columncontr_number" msprop:Generator_ColumnPropNameInRow="contr_number" msprop:Generator_ColumnPropNameInTable="contr_numberColumn" msprop:Generator_UserColumnName="contr_number" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="10" />
+                    <xs:maxLength value="11" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
@@ -744,10 +744,18 @@ WHERE        (id = @Param2id)</CommandText>
       <xs:selector xpath=".//mstns:contracts" />
       <xs:field xpath="mstns:id" />
     </xs:unique>
+    <xs:unique name="contracts_Constraint2" msdata:ConstraintName="Constraint2">
+      <xs:selector xpath=".//mstns:contracts" />
+      <xs:field xpath="mstns:name" />
+    </xs:unique>
+    <xs:unique name="Constraint3">
+      <xs:selector xpath=".//mstns:contracts" />
+      <xs:field xpath="mstns:contr_number" />
+    </xs:unique>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="registrators_contracts" msdata:parent="registrators" msdata:child="contracts" msdata:parentkey="id" msdata:childkey="registrator" msprop:Generator_UserChildTable="contracts" msprop:Generator_ChildPropName="GetcontractsRows" msprop:Generator_UserRelationName="registrators_contracts" msprop:Generator_ParentPropName="registratorsRow" msprop:Generator_RelationVarName="relationregistrators_contracts" msprop:Generator_UserParentTable="registrators" />
+      <msdata:Relationship name="registrators_contracts" msdata:parent="registrators" msdata:child="contracts" msdata:parentkey="id" msdata:childkey="registrator" msprop:Generator_UserChildTable="contracts" msprop:Generator_ChildPropName="GetcontractsRows" msprop:Generator_UserRelationName="registrators_contracts" msprop:Generator_RelationVarName="relationregistrators_contracts" msprop:Generator_UserParentTable="registrators" msprop:Generator_ParentPropName="registratorsRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

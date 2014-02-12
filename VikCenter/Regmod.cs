@@ -22,6 +22,25 @@ namespace VikCenter
         public Regmod()
         {
             InitializeComponent();
+            MyInit();
+        }
+
+        private void MyInit()
+        {
+            this.dataGridView1.DataError += dataGridView1_DataError;
+            this.dataGridView3.DataError += dataGridView3_DataError;
+        }
+
+        void dataGridView1_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            e.Cancel = e.Exception is System.Data.ConstraintException;
+            MessageBox.Show("Вы ввели некорректное значение", "Ошибка", MessageBoxButtons.OK);
+        }
+
+        void dataGridView3_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            e.Cancel = e.Exception is System.Data.ConstraintException;
+            MessageBox.Show("Вы ввели некорректное значение", "Ошибка", MessageBoxButtons.OK);
         }
 
         private void Regmod_Load(object sender, EventArgs e)
@@ -301,7 +320,7 @@ namespace VikCenter
         {
             MainForm main = this.MdiParent as MainForm;
 
-            if (MessageBox.Show("Сохранить текущие изменения в базе?", "Закрытие окна...", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+            if (MessageBox.Show("Сохранить в базу текущие данные?", "Закрытие окна...", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
             {
                 
                 main.global.renewRegsTable();
@@ -387,7 +406,7 @@ namespace VikCenter
             string s2 = dataGridView3.CurrentRow.Cells["create_login"].Value.ToString();
             string s3 = dataGridView3.CurrentRow.Cells["edit_time"].Value.ToString();
             string s4 = dataGridView3.CurrentRow.Cells["edit_login"].Value.ToString();
-            RowInfoForm info = new RowInfoForm(s, s2, s3, s4);
+            RowInfoForm info = new RowInfoForm(s, s2, s3, s4, dataGridView3.CurrentRow.Cells["comment"]);
             info.ShowDialog();
         }
         private void dataGridView3_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -454,7 +473,7 @@ namespace VikCenter
             string s2 = dataGridView1.CurrentRow.Cells["create_login"].Value.ToString();
             string s3 = dataGridView1.CurrentRow.Cells["edit_time"].Value.ToString();
             string s4 = dataGridView1.CurrentRow.Cells["edit_login"].Value.ToString();
-            RowInfoForm info = new RowInfoForm(s, s2, s3, s4);
+            RowInfoForm info = new RowInfoForm(s, s2, s3, s4, dataGridView1.CurrentRow.Cells["comment"]);
             info.ShowDialog();
         }
         private void dataGridView1_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
@@ -536,6 +555,51 @@ namespace VikCenter
         private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void dataGridView1_RowValidating(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            if (e.Cancel == true) MessageBox.Show("test");
+            try
+            {
+               // dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value
+            }
+            catch (System.Data.ConstraintException)
+            {
+                MessageBox.Show("Введите уникальное значение!");
+                
+            }
+        }
+
+        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+
+           /* if (e.Value != null && dataGridView1.Columns[e.ColumnIndex].Name == "contr_number")
+            {
+                System.Text.StringBuilder str = new StringBuilder();
+                str.Append(e.Value.ToString()[0] + e.Value.ToString()[1]);
+                str.Append('-');
+                str.Append(e.Value.ToString()[2] + e.Value.ToString()[3]);
+                str.Append('-');
+                str.Append(e.Value.ToString()[4] + e.Value.ToString()[5]);
+                str.Append('-');
+            }*/
+        }
+
+        private void dataGridView3_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            /*if (dataGridView3.Columns[e.ColumnIndex].Name == "contr_number")
+            {
+                System.Text.StringBuilder str = new StringBuilder();
+                str.Append(e.Value.ToString()[0] + e.Value.ToString()[1]);
+                str.Append('-');
+                str.Append(e.Value.ToString()[2] + e.Value.ToString()[3]);
+                str.Append('-');
+                str.Append(e.Value.ToString()[4] + e.Value.ToString()[5]);
+                str.Append('-');
+                e.Value = str.ToString();
+                e.FormattingApplied = true;
+            }*/
         }
 
 

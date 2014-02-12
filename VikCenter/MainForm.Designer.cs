@@ -29,9 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.MainMenu = new System.Windows.Forms.MenuStrip();
-            this.statusStrip = new System.Windows.Forms.StatusStrip();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходИзУчетнойЗаписиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,6 +47,8 @@
             this.каскадомToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.вертикальноToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.горизонтальноToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.MainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,19 +64,6 @@
             this.MainMenu.Size = new System.Drawing.Size(698, 24);
             this.MainMenu.TabIndex = 1;
             this.MainMenu.Text = "menuStrip1";
-            // 
-            // statusStrip
-            // 
-            this.statusStrip.Location = new System.Drawing.Point(0, 329);
-            this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(698, 22);
-            this.statusStrip.TabIndex = 2;
-            this.statusStrip.Text = "statusStrip1";
-            // 
-            // timer1
-            // 
-            this.timer1.Interval = 60000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // файлToolStripMenuItem
             // 
@@ -206,6 +194,19 @@
             this.горизонтальноToolStripMenuItem.Text = "Горизонтально";
             this.горизонтальноToolStripMenuItem.Click += new System.EventHandler(this.горизонтальноToolStripMenuItem_Click);
             // 
+            // statusStrip
+            // 
+            this.statusStrip.Location = new System.Drawing.Point(0, 329);
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.Size = new System.Drawing.Size(698, 22);
+            this.statusStrip.TabIndex = 2;
+            this.statusStrip.Text = "statusStrip1";
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 60000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -213,6 +214,7 @@
             this.ClientSize = new System.Drawing.Size(698, 351);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.MainMenu);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.MainMenu;
             this.Name = "MainForm";

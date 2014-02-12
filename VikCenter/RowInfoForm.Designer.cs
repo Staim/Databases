@@ -36,6 +36,7 @@
             this.comment = new System.Windows.Forms.RichTextBox();
             this.cLoginLabel = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -63,9 +64,8 @@
             this.eLoginLabel.AutoSize = true;
             this.eLoginLabel.Location = new System.Drawing.Point(13, 57);
             this.eLoginLabel.Name = "eLoginLabel";
-            this.eLoginLabel.Size = new System.Drawing.Size(24, 13);
+            this.eLoginLabel.Size = new System.Drawing.Size(0, 13);
             this.eLoginLabel.TabIndex = 2;
-            this.eLoginLabel.Text = "test";
             // 
             // editTimeLabel
             // 
@@ -81,9 +81,8 @@
             this.createTimeLabel.AutoSize = true;
             this.createTimeLabel.Location = new System.Drawing.Point(314, 9);
             this.createTimeLabel.Name = "createTimeLabel";
-            this.createTimeLabel.Size = new System.Drawing.Size(24, 13);
+            this.createTimeLabel.Size = new System.Drawing.Size(0, 13);
             this.createTimeLabel.TabIndex = 4;
-            this.createTimeLabel.Text = "test";
             // 
             // comment
             // 
@@ -98,9 +97,8 @@
             this.cLoginLabel.AutoSize = true;
             this.cLoginLabel.Location = new System.Drawing.Point(12, 22);
             this.cLoginLabel.Name = "cLoginLabel";
-            this.cLoginLabel.Size = new System.Drawing.Size(24, 13);
+            this.cLoginLabel.Size = new System.Drawing.Size(0, 13);
             this.cLoginLabel.TabIndex = 6;
-            this.cLoginLabel.Text = "test";
             // 
             // label3
             // 
@@ -112,11 +110,22 @@
             this.label3.TabIndex = 7;
             this.label3.Text = "Комментарий:";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(154, 165);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(144, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "ОК";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // RowInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(436, 169);
+            this.ClientSize = new System.Drawing.Size(436, 198);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cLoginLabel);
             this.Controls.Add(this.comment);
@@ -144,5 +153,6 @@
         private System.Windows.Forms.RichTextBox comment;
         private System.Windows.Forms.Label cLoginLabel;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button1;
     }
 }

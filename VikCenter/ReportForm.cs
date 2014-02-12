@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data;
 using MySql.Data.MySqlClient;
+using Word = Microsoft.Office.Interop.Word;
+using System.Reflection;
+
 
 namespace VikCenter
 {
@@ -16,6 +19,125 @@ namespace VikCenter
     {
         MainForm all;
         DataSet1TableAdapters.JoinTableAdapter joinAdapter = new DataSet1TableAdapters.JoinTableAdapter();
+       
+        private Word._Application _application;
+        private Word._Document _document;
+        // фиксированные параметры для передачи приложению Word
+        private Object _missingObj = System.Reflection.Missing.Value;
+        private Object _trueObj = true;
+        private Object _falseObj = false;
+        private decimal sum = 0;
+        private decimal sum2 = 0;
+
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            //создаем обьект приложения word
+            _application = new Word.Application();
+            // создаем путь к файлу
+            Object templatePathObj = Application.StartupPath + "\\" + "VikCentr.dot";
+            
+          /*  WordDocument testWordDoc;
+            try
+            {
+                testWordDoc = new WordDocument();
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("Ошибка при открытии шаблона Word. Подробности " + error.Message);
+                return;
+            }
+            testWordDoc.Visible = true;*/
+            // если вылетим не этом этапе, приложение останется открытым
+            try
+            {
+                _document = _application.Documents.Add(ref  templatePathObj, ref _missingObj, ref _missingObj, ref _missingObj);
+            }
+            catch (Exception error)
+            {
+                _document.Close(ref _falseObj, ref  _missingObj, ref _missingObj);
+                _application.Quit(ref _missingObj, ref  _missingObj, ref _missingObj);
+                _document = null;
+                _application = null;
+                throw error;
+            }
+            _application.Visible = true;
+            Object bookmark = "date1";
+            Word.Range bookmarkRange = _document.Bookmarks.get_Item(ref bookmark).Range;
+            bookmarkRange.Bold = 1;
+            Object bookmark2 = "date2";
+            Word.Range bookmarkRange2 = _document.Bookmarks.get_Item(ref bookmark2).Range;
+            bookmarkRange2.Bold = 1;
+            string firstDate;
+            string secondDate;
+            if (dateTimePicker1.Enabled && dateTimePicker2.Enabled)
+            {
+                firstDate = dateTimePicker1.Value.ToShortDateString();
+                secondDate = dateTimePicker2.Value.ToShortDateString();
+                bookmarkRange.Text = firstDate;
+                bookmarkRange2.Text = secondDate;
+            }
+
+            Object manager1 = "manager1";
+            Object manager2 = "manager2";
+            Word.Range manager1range = _document.Bookmarks.get_Item(ref manager1).Range;
+            Word.Range manager2range = _document.Bookmarks.get_Item(ref manager2).Range;
+            manager1range.Bold = 1;
+            manager2range.Bold = 1;
+            manager1range.Text = datagridview1.Rows[0].Cells["man1"].Value.ToString();
+            manager2range.Text = datagridview1.Rows[0].Cells["man2"].Value.ToString();
+
+            Object sum_man1 = "manager1_bottom";
+            Object sum_man2 = "manager2_bottom";
+            Word.Range sum_man1Range = _document.Bookmarks.get_Item(ref sum_man1).Range;
+            Word.Range sum_man2Range = _document.Bookmarks.get_Item(ref sum_man2).Range;
+            sum_man1Range.Bold = 1;
+            sum_man2Range.Bold = 1;
+            sum_man1Range.Text = sum.ToString("C");
+            sum_man2Range.Text = sum2.ToString("C");
+
+            /********************************************************
+             * ************ТАБЛИЦА***********************************
+             * *****************************************************/
+            Word.Range currange;
+            Word.Table _table = _document.Tables[1];
+            for (int i = 0; i < datagridview1.RowCount; i++)
+            {
+
+                _table.Rows.Add(ref _missingObj);
+                currange = _table.Cell(i + 2, 1).Range;
+                currange.Bold = 0;
+                currange.Text = datagridview1.Rows[i].Cells["registrator"].Value.ToString();
+                currange = _table.Cell(i + 2, 2).Range;
+                currange.Bold = 0;
+                currange.Text = datagridview1.Rows[i].Cells["contr_number"].Value.ToString();
+                currange = _table.Cell(i + 2, 3).Range;
+                currange.Bold = 0;
+                decimal s;
+                s = decimal.Parse(datagridview1.Rows[i].Cells["sum"].Value.ToString());
+                currange.Text = s.ToString("C");
+                currange = _table.Cell(i + 2, 4).Range;
+                currange.Bold = 0;
+                s = decimal.Parse(datagridview1.Rows[i].Cells["man2_proc"].Value.ToString());
+                currange.Text = s.ToString("C");
+                currange = _table.Cell(i + 2, 5).Range;
+                currange.Bold = 0;
+                s = decimal.Parse(datagridview1.Rows[i].Cells["man_v_proc"].Value.ToString());
+                currange.Text = s.ToString("C");
+            }
+
+
+            /********************************************************
+            * ************ТАБЛИЦА***********************************
+            * *****************************************************/
+        }
+
+
+
+
+
+
+
 
         public Report()
         {
@@ -55,10 +177,28 @@ namespace VikCenter
         //установка фильтров
         private void button1_Click(object sender, EventArgs e)
         {
-       //     Form1 frm = new Form1();
-       //     frm.ShowDialog();
+
+            sum = sum2 = 0;
             bindingSource1.RemoveFilter();
             setFilters();
+            if(comboBox1.Text != "Все" || comboBox2.Text != "Все")
+            if (datagridview1.RowCount > 0)
+            {
+                for (int i = 0; i < (datagridview1.RowCount-1); i++)
+                {
+                    if (datagridview1.Rows[i].Cells["man2_proc"].Value.ToString().Length > 0)
+                    {
+                        sum += decimal.Parse(datagridview1.Rows[i].Cells["man2_proc"].Value.ToString());
+                    }
+                    if (datagridview1.Rows[i].Cells["man_v_proc"].Value.ToString().Length > 0)
+                    {
+                        sum2 += decimal.Parse(datagridview1.Rows[i].Cells["man_v_proc"].Value.ToString());
+                    }
+                }
+                label1.Text = "Итоговая сумма менеджера \"хол. звонок\" = " + sum.ToString("C") +
+                    "\nИтоговая сумма менеджера \"встреча\" = " + sum2.ToString("C");
+            }
+
         }
 
         private void setFilters()
@@ -117,6 +257,8 @@ namespace VikCenter
             datagridview1.Columns["sum"].DefaultCellStyle.Format = "C";
             datagridview1.Columns["man2_proc"].DefaultCellStyle.Format = "C";
             datagridview1.Columns["sum"].DisplayIndex = 6;
+            datagridview1.Columns["man_v_proc"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            datagridview1.Columns["man_v_proc"].DefaultCellStyle.Format = "C";
         }
 
         private void checkBox1_Click(object sender, EventArgs e)
@@ -192,5 +334,7 @@ namespace VikCenter
             MainForm main = this.MdiParent as MainForm;
             main.global.Windows = main.global.Windows ^ Global.WindowsOpen.Report;
         }
+
+
     }
 }

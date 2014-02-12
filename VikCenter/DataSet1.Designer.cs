@@ -2254,15 +2254,21 @@ namespace VikCenter {
                 base.Columns.Add(this.columnman_v_proc);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnid}, true));
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint2", new global::System.Data.DataColumn[] {
+                                this.columnname}, false));
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint3", new global::System.Data.DataColumn[] {
+                                this.columncontr_number}, false));
                 this.columnid.AutoIncrement = true;
                 this.columnid.AutoIncrementSeed = -1;
                 this.columnid.AutoIncrementStep = -1;
                 this.columnid.AllowDBNull = false;
                 this.columnid.Unique = true;
+                this.columnname.Unique = true;
                 this.columnname.MaxLength = 50;
                 this.columntype.MaxLength = 20;
                 this.columnadress.MaxLength = 255;
-                this.columncontr_number.MaxLength = 10;
+                this.columncontr_number.Unique = true;
+                this.columncontr_number.MaxLength = 11;
                 this.columncreate_login.MaxLength = 100;
                 this.columnedit_login.MaxLength = 100;
                 this.columncomment.MaxLength = 255;

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Report));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
@@ -41,20 +42,21 @@
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.datagridview1 = new System.Windows.Forms.DataGridView();
+            this.button3 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datagridview1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -202,29 +204,42 @@
             // 
             // splitContainer2.Panel2
             // 
+            this.splitContainer2.Panel2.Controls.Add(this.button3);
             this.splitContainer2.Panel2.Controls.Add(this.label1);
             this.splitContainer2.Size = new System.Drawing.Size(959, 281);
-            this.splitContainer2.SplitterDistance = 252;
+            this.splitContainer2.SplitterDistance = 234;
             this.splitContainer2.TabIndex = 0;
             // 
             // datagridview1
             // 
+            this.datagridview1.AllowUserToAddRows = false;
             this.datagridview1.AllowUserToOrderColumns = true;
             this.datagridview1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datagridview1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.datagridview1.Location = new System.Drawing.Point(0, 0);
             this.datagridview1.Name = "datagridview1";
-            this.datagridview1.Size = new System.Drawing.Size(959, 252);
+            this.datagridview1.Size = new System.Drawing.Size(959, 234);
             this.datagridview1.TabIndex = 0;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(14, 11);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(241, 23);
+            this.button3.TabIndex = 1;
+            this.button3.Text = "Сформировать отчет Word";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(708, 6);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(498, 5);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 13);
+            this.label1.Size = new System.Drawing.Size(291, 30);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Итого:";
+            this.label1.Text = "Итоговая сумма менеджера \"хол. звонок\":\r\nИтоговая сумма менеджера \"встреча\":";
             // 
             // Report
             // 
@@ -232,6 +247,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(959, 376);
             this.Controls.Add(this.splitContainer1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Report";
             this.Text = "Формирование отчета";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Report_FormClosing);
@@ -241,13 +257,13 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
             this.splitContainer2.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.datagridview1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -270,6 +286,7 @@
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.DataGridView datagridview1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button3;
 
     }
 }
