@@ -28,6 +28,7 @@ namespace VikCenter
         private Object _falseObj = false;
         private decimal sum = 0;
         private decimal sum2 = 0;
+        private decimal sum_contracts = 0;
 
 
         private void button3_Click(object sender, EventArgs e)
@@ -103,10 +104,12 @@ namespace VikCenter
              * *****************************************************/
             Word.Range currange;
             Word.Table _table = _document.Tables[1];
+            _table.Rows.First.Shading.BackgroundPatternColor = Word.WdColor.wdColorGray20;
             for (int i = 0; i < datagridview1.RowCount; i++)
             {
 
-                _table.Rows.Add(ref _missingObj);
+                _table.Rows.Add(ref _missingObj).Shading.BackgroundPatternColor = Word.WdColor.wdColorWhite;
+                _table.Cell(i + 2, 1).Shading.BackgroundPatternColor = Word.WdColor.wdColorWhite;
                 currange = _table.Cell(i + 2, 1).Range;
                 currange.Bold = 0;
                 currange.Text = datagridview1.Rows[i].Cells["registrator"].Value.ToString();
@@ -128,13 +131,22 @@ namespace VikCenter
                 currange.Text = s.ToString("C");
             }
 
-            _table.Rows.Add(ref _missingObj);
+            _table.Rows.Add(ref _missingObj).Shading.BackgroundPatternColor = Word.WdColor.wdColorGray20;
             _table.Rows[datagridview1.RowCount+2].Cells[1].Merge(_table.Rows[datagridview1.RowCount+2].Cells[2]);
             currange = _table.Cell(datagridview1.RowCount + 2, 1).Range;
+            currange.Font.Bold = 1;
+            currange.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphRight;
             currange.Text = "Итого:";
+            currange = _table.Cell(datagridview1.RowCount + 2, 2).Range;
+            currange.Font.Bold = 1;
+            currange.Text = sum_contracts.ToString("C");
+            
+            //currange.Font.Shading.BackgroundPatternColor = Word.WdColor.wdColorBlack;
             currange = _table.Cell(datagridview1.RowCount + 2, 3).Range;
+            currange.Font.Bold = 1;
             currange.Text = sum.ToString("C");
             currange = _table.Cell(datagridview1.RowCount + 2, 4).Range;
+            currange.Font.Bold = 1;
             currange.Text = sum2.ToString("C");
 
             /********************************************************
@@ -188,7 +200,7 @@ namespace VikCenter
         private void button1_Click(object sender, EventArgs e)
         {
 
-            sum = sum2 = 0;
+            sum = sum2 = sum_contracts = 0;
             bindingSource1.RemoveFilter();
             setFilters();
             if(comboBox1.Text != "Все" || comboBox2.Text != "Все")
@@ -203,6 +215,10 @@ namespace VikCenter
                     if (datagridview1.Rows[i].Cells["man_v_proc"].Value.ToString().Length > 0)
                     {
                         sum2 += decimal.Parse(datagridview1.Rows[i].Cells["man_v_proc"].Value.ToString());
+                    }
+                    if (datagridview1["sum", i].Value.ToString().Length > 0)
+                    {
+                        sum_contracts += decimal.Parse(datagridview1["sum", i].Value.ToString());
                     }
                 }
                 label1.Text = "Итоговая сумма менеджера \"хол. звонок\" = " + sum.ToString("C") +
