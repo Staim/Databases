@@ -36,6 +36,8 @@ namespace VikCenter
         private void button1_Click(object sender, EventArgs e)
         {
             if (comment.Text.Length > 0) this.cell.Value = comment.Text;
+            //cell.DataGridView.CurrentRow.Cells["name"].Style.BackColor = Color.LightGray;
+            //cell.DataGridView.CurrentRow.HeaderCell.Style.ForeColor = Color.Red;
             this.Close();
         }
     }

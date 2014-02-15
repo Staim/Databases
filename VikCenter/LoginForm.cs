@@ -74,7 +74,9 @@ namespace VikCenter
 
         private void enterButton_Click(object sender, EventArgs e)
         {
-            //можно добавить транзакцию
+            //0Form1 frm = new Form1();
+            //frm.ShowDialog();
+            
             //db1DataSetTableAdapters.ЛогиныTableAdapter loginTableAdapter = new db1DataSetTableAdapters.ЛогиныTableAdapter();
             DataSet1TableAdapters.loginsTableAdapter loginTableAdapter = new DataSet1TableAdapters.loginsTableAdapter();
 
@@ -90,7 +92,7 @@ namespace VikCenter
                     string pass = (string) row["password"];
                         if (login == loginTextBox.Text && pass == passwordTextBox.Text)
                         {
-                            //_loginIfo = "Вы зашли под именем: " + login + ". Время подключения: " + DateTime.Now.ToShortTimeString();
+                            
                             verify = true;
                             loginInfo.Login = login;
                             loginInfo.Password = pass;
@@ -107,7 +109,7 @@ namespace VikCenter
                                 {
                                     fileMode = FileMode.Create;
                                 }
-                                using (FileStream fs = new FileStream(@"login.ini", fileMode))
+                                using (FileStream fs = new FileStream(@"login.pwd", fileMode))
                                 {
                                     BinaryFormatter binaryFormatter = new BinaryFormatter();
                                     binaryFormatter.Serialize(fs, loginInfo);

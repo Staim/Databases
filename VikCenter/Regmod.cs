@@ -27,8 +27,8 @@ namespace VikCenter
 
         private void MyInit()
         {
-            this.dataGridView1.DataError += dataGridView1_DataError;
-            this.dataGridView3.DataError += dataGridView3_DataError;
+            /*this.dataGridView1.DataError += dataGridView1_DataError;
+            this.dataGridView3.DataError += dataGridView3_DataError;*/
         }
 
         void dataGridView1_DataError(object sender, DataGridViewDataErrorEventArgs e)
@@ -112,17 +112,24 @@ namespace VikCenter
             convension.Items.AddRange("С платежами", "Без платежей");
             convension.HeaderText = "Вид договора";
             convension.DataPropertyName = "type";
+            dataGridView3.Columns.Remove("contr_number");
+            DataGridViewMaskedTextBoxColumn maskedColumn = new DataGridViewMaskedTextBoxColumn();
+            maskedColumn.DefaultCellStyle.Format = "00-00-00(##)";
+            
+            maskedColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            maskedColumn.HeaderText = "№ Договора";
+            maskedColumn.DataPropertyName = "contr_number";
+            dataGridView3.Columns.Insert(5, maskedColumn);
             dataGridView3.Columns.RemoveAt(2);
             dataGridView3.Columns.Insert(2, convension);
-            SetUpDataGrid_new(main);
+            
             DataGridViewCalendarColumn payDate = new DataGridViewCalendarColumn();
             payDate.DataPropertyName = "pay_date";
             payDate.HeaderText = "Дата платежа";
             dataGridView3.Columns.RemoveAt(7);
             dataGridView3.Columns.Insert(7, payDate);
-            dataGridView3.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridView3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             
+            dataGridView3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void SetUpDataGrid_new(MainForm main)
@@ -167,7 +174,13 @@ namespace VikCenter
             dataGridView1.Columns["edit_time"].Visible = false;
             dataGridView1.Columns["status"].Visible = false;
             dataGridView1.Columns["comment"].Visible = false;
-
+           /*
+            DataGridViewMaskedTextBoxColumn maskedColumn = new DataGridViewMaskedTextBoxColumn();
+            maskedColumn.DefaultCellStyle.Format = "00-00-00|##";
+            maskedColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            maskedColumn.HeaderText = "№ Договора";
+            maskedColumn.DataPropertyName = "contr_number";
+            dataGridView3.Columns.Insert(5, maskedColumn);*/
             dataGridView1.Columns["name"].HeaderText = "Регистратор";
 
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font(new FontFamily("Arial"), 10, FontStyle.Bold);
@@ -214,8 +227,8 @@ namespace VikCenter
             MainForm main = this.MdiParent as MainForm;
             registratorRowPosition = bindingSource1.Position;
             contractRowPostion = bindingSource3.Position;
-            main.global.regAdapter.Update(main.global.dataSet.registrators);
-            main.global.regAdapter.Fill(main.global.dataSet.registrators);
+            main.global.renewRegsTable();
+            //main.global.regAdapter.Fill(main.global.dataSet.registrators);
             bindingSource1.Position = registratorRowPosition;
             bindingSource3.Position = contractRowPostion;
 
@@ -227,7 +240,7 @@ namespace VikCenter
             contractRowPostion = bindingSource3.Position;
             registratorRowPosition = bindingSource1.Position;
             main.global.arendaAdapter.Update(main.global.dataSet.contracts);
-            main.global.regAdapter.Fill(main.global.dataSet.registrators);
+           // main.global.regAdapter.Fill(main.global.dataSet.registrators);
             bindingSource3.Position = contractRowPostion;
             bindingSource1.Position = registratorRowPosition;
         }

@@ -30,6 +30,12 @@ namespace VikCenter
             
             adapter.Fill(dataset);
             this.dataGridView1.DataSource = dataset.Tables[0];
+            this.dataGridView1.Columns.Remove("contr_number");
+            DataGridViewMaskedTextBoxColumn maskedColumn = new DataGridViewMaskedTextBoxColumn();
+            maskedColumn.DefaultCellStyle.Format = "##-##-##";
+            maskedColumn.DataPropertyName = "contr_number";
+            this.dataGridView1.Columns.Insert(5, maskedColumn);
+            this.dataGridView1.Columns.Add(new DataGridViewMaskedTextBoxColumn());
             MessageBox.Show("test");
 
         }

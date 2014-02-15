@@ -37,18 +37,6 @@ namespace VikCenter
             // создаем путь к файлу
             Object templatePathObj = Application.StartupPath + "\\" + "VikCentr.dot";
             
-          /*  WordDocument testWordDoc;
-            try
-            {
-                testWordDoc = new WordDocument();
-            }
-            catch (Exception error)
-            {
-                MessageBox.Show("Ошибка при открытии шаблона Word. Подробности " + error.Message);
-                return;
-            }
-            testWordDoc.Visible = true;*/
-            // если вылетим не этом этапе, приложение останется открытым
             try
             {
                 _document = _application.Documents.Add(ref  templatePathObj, ref _missingObj, ref _missingObj, ref _missingObj);
@@ -64,10 +52,16 @@ namespace VikCenter
             _application.Visible = true;
             Object bookmark = "date1";
             Word.Range bookmarkRange = _document.Bookmarks.get_Item(ref bookmark).Range;
+            bookmarkRange.Font.Bold = 1;
             bookmarkRange.Bold = 1;
+            bookmarkRange.Font.Size = 14;
+
+            bookmarkRange.Font.Underline = Word.WdUnderline.wdUnderlineDash;
             Object bookmark2 = "date2";
             Word.Range bookmarkRange2 = _document.Bookmarks.get_Item(ref bookmark2).Range;
-            bookmarkRange2.Bold = 1;
+            bookmarkRange2.Font.Bold = 1;
+            bookmarkRange2.Font.Size = 14;
+
             string firstDate;
             string secondDate;
             if (dateTimePicker1.Enabled && dateTimePicker2.Enabled)
@@ -78,23 +72,31 @@ namespace VikCenter
                 bookmarkRange2.Text = secondDate;
             }
 
-            Object manager1 = "manager1";
-            Object manager2 = "manager2";
+            Object registrator = "registrator";
+            Word.Range registratorRange = _document.Bookmarks.get_Item(ref registrator).Range;
+            registratorRange.Font.Size = 14;
+            registratorRange.Font.Bold = 1;
+            registratorRange.Text = datagridview1["registrator", 0].Value.ToString();
+            
+            
+            
+            Object manager1 = "man1";
+            Object manager2 = "man2";
             Word.Range manager1range = _document.Bookmarks.get_Item(ref manager1).Range;
             Word.Range manager2range = _document.Bookmarks.get_Item(ref manager2).Range;
             manager1range.Bold = 1;
             manager2range.Bold = 1;
             manager1range.Text = datagridview1.Rows[0].Cells["man1"].Value.ToString();
             manager2range.Text = datagridview1.Rows[0].Cells["man2"].Value.ToString();
-
-            Object sum_man1 = "manager1_bottom";
+            
+            /*Object sum_man1 = "manager1_bottom";
             Object sum_man2 = "manager2_bottom";
             Word.Range sum_man1Range = _document.Bookmarks.get_Item(ref sum_man1).Range;
             Word.Range sum_man2Range = _document.Bookmarks.get_Item(ref sum_man2).Range;
             sum_man1Range.Bold = 1;
             sum_man2Range.Bold = 1;
             sum_man1Range.Text = sum.ToString("C");
-            sum_man2Range.Text = sum2.ToString("C");
+            sum_man2Range.Text = sum2.ToString("C");*/
 
             /********************************************************
              * ************ТАБЛИЦА***********************************
@@ -126,6 +128,14 @@ namespace VikCenter
                 currange.Text = s.ToString("C");
             }
 
+            _table.Rows.Add(ref _missingObj);
+            _table.Rows[datagridview1.RowCount+2].Cells[1].Merge(_table.Rows[datagridview1.RowCount+2].Cells[2]);
+            currange = _table.Cell(datagridview1.RowCount + 2, 1).Range;
+            currange.Text = "Итого:";
+            currange = _table.Cell(datagridview1.RowCount + 2, 3).Range;
+            currange.Text = sum.ToString("C");
+            currange = _table.Cell(datagridview1.RowCount + 2, 4).Range;
+            currange.Text = sum2.ToString("C");
 
             /********************************************************
             * ************ТАБЛИЦА***********************************

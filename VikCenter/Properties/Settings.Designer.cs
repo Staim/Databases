@@ -69,8 +69,8 @@ namespace VikCenter.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("server=localhost;user id=root;password=polta1712;persistsecurityinfo=True;databas" +
-            "e=database")]
+        [global::System.Configuration.DefaultSettingValueAttribute("server=192.168.200.200;user id=root;password=123456;persistsecurityinfo=True;data" +
+            "base=database")]
         public string databaseConnectionString {
             get {
                 return ((string)(this["databaseConnectionString"]));

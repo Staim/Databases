@@ -240,6 +240,7 @@
             this.label1.Size = new System.Drawing.Size(291, 30);
             this.label1.TabIndex = 0;
             this.label1.Text = "Итоговая сумма менеджера \"хол. звонок\":\r\nИтоговая сумма менеджера \"встреча\":";
+            this.label1.Visible = false;
             // 
             // Report
             // 
